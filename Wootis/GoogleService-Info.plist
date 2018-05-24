@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>981753684247-o2ivqjtbqa0pfo59lb3qge1rvkdobrcg.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.981753684247-o2ivqjtbqa0pfo59lb3qge1rvkdobrcg</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBFKmpCdYWGtQwu6GRTYxnsna3wNDTcdjs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>981753684247</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>alexlopez.com.Wootis</string>
+	<key>PROJECT_ID</key>
+	<string>wooptis-database</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wooptis-database.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:981753684247:ios:1a7b8abdb348b246</string>
+	<key>DATABASE_URL</key>
+	<string>https://wooptis-database.firebaseio.com</string>
+</dict>
+</plist>

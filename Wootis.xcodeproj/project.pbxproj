@@ -7,21 +7,55 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23B842DA3EBA5AC3218C75FA /* Pods_Wootis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7960411884A0D9FEEE21E0DD /* Pods_Wootis.framework */; };
+		AC11591C1FF56A6F00B30C79 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11591B1FF56A6F00B30C79 /* SignUpViewController.swift */; };
+		AC289E182086130600BF9550 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC289E172086130600BF9550 /* Config.swift */; };
+		AC289E1B208613AC00BF9550 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC289E1A208613AC00BF9550 /* Post.swift */; };
+		AC3A5D4E208373390085F0CD /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A5D4D208373390085F0CD /* PostViewController.swift */; };
 		AC6DBC1E1FED59C800C62610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBC1D1FED59C800C62610 /* AppDelegate.swift */; };
-		AC6DBC201FED59C800C62610 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBC1F1FED59C800C62610 /* ViewController.swift */; };
-		AC6DBC231FED59C800C62610 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6DBC211FED59C800C62610 /* Main.storyboard */; };
 		AC6DBC251FED59C800C62610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6DBC241FED59C800C62610 /* Assets.xcassets */; };
 		AC6DBC281FED59C800C62610 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6DBC261FED59C800C62610 /* LaunchScreen.storyboard */; };
+		AC6DBC301FED5ADF00C62610 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6DBC2F1FED5ADF00C62610 /* Start.storyboard */; };
+		AC6DBC321FED5D5D00C62610 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBC311FED5D5D00C62610 /* SignInViewController.swift */; };
+		ACA4B264205F0371004BFB87 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA4B263205F0370004BFB87 /* AuthServices.swift */; };
+		ACCDE4612073B95F00BD8771 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ACCDE45E2073B95E00BD8771 /* ProgressHUD.bundle */; };
+		ACCDE4622073B95F00BD8771 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCDE4602073B95F00BD8771 /* ProgressHUD.m */; };
+		ACCE6B59204DD80100F1CBEB /* test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCE6B58204DD80100F1CBEB /* test.storyboard */; };
+		ACE8B7142089594700BB8656 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE8B7132089594700BB8656 /* HomeTableViewCell.swift */; };
+		ACF1120420397AE90067B433 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF1120320397AE90067B433 /* HomeViewController.swift */; };
+		ACF1120620397B520067B433 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF1120520397B520067B433 /* SearchViewController.swift */; };
+		ACF1120820397B6F0067B433 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF1120720397B6F0067B433 /* ProfileViewController.swift */; };
+		ACF1120A2039820E0067B433 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACF112092039820E0067B433 /* Main.storyboard */; };
+		ACF1121620399EE70067B433 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACF1121520399EE60067B433 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7960411884A0D9FEEE21E0DD /* Pods_Wootis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wootis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8672F46D9C6590869CACB5BE /* Pods-Wootis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wootis.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wootis/Pods-Wootis.debug.xcconfig"; sourceTree = "<group>"; };
+		AC11591B1FF56A6F00B30C79 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		AC289E172086130600BF9550 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		AC289E1A208613AC00BF9550 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		AC3A5D4D208373390085F0CD /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		AC6DBC1A1FED59C800C62610 /* Wootis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wootis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6DBC1D1FED59C800C62610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC6DBC1F1FED59C800C62610 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AC6DBC221FED59C800C62610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC6DBC241FED59C800C62610 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC6DBC271FED59C800C62610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC6DBC291FED59C800C62610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC6DBC2F1FED5ADF00C62610 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		AC6DBC311FED5D5D00C62610 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		ACA4B263205F0370004BFB87 /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
+		ACCDE45D2073B95D00BD8771 /* Wootis-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wootis-Bridging-Header.h"; sourceTree = "<group>"; };
+		ACCDE45E2073B95E00BD8771 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		ACCDE45F2073B95F00BD8771 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		ACCDE4602073B95F00BD8771 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		ACCE6B58204DD80100F1CBEB /* test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = test.storyboard; sourceTree = "<group>"; };
+		ACE8B7132089594700BB8656 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		ACF1120320397AE90067B433 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		ACF1120520397B520067B433 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		ACF1120720397B6F0067B433 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		ACF112092039820E0067B433 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		ACF1121520399EE60067B433 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B114D64ABE5D76283EF4376B /* Pods-Wootis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wootis.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wootis/Pods-Wootis.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +63,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B842DA3EBA5AC3218C75FA /* Pods_Wootis.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C2ED9AB809C9B11528223DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7960411884A0D9FEEE21E0DD /* Pods_Wootis.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC289E192086136400BF9550 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC289E1A208613AC00BF9550 /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AC6DBC111FED59C800C62610 = {
 			isa = PBXGroup;
 			children = (
 				AC6DBC1C1FED59C800C62610 /* Wootis */,
 				AC6DBC1B1FED59C800C62610 /* Products */,
+				C0424F88C4B82F04AAEEBB4A /* Pods */,
+				0C2ED9AB809C9B11528223DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +108,62 @@
 			isa = PBXGroup;
 			children = (
 				AC6DBC1D1FED59C800C62610 /* AppDelegate.swift */,
-				AC6DBC1F1FED59C800C62610 /* ViewController.swift */,
-				AC6DBC211FED59C800C62610 /* Main.storyboard */,
+				ACA4B263205F0370004BFB87 /* AuthServices.swift */,
+				AC289E192086136400BF9550 /* Model */,
+				ACE8B7112089588B00BB8656 /* ViewControllers */,
+				ACE8B7152089594C00BB8656 /* Views */,
+				ACE8B712208958C600BB8656 /* Storyboards */,
 				AC6DBC241FED59C800C62610 /* Assets.xcassets */,
-				AC6DBC261FED59C800C62610 /* LaunchScreen.storyboard */,
 				AC6DBC291FED59C800C62610 /* Info.plist */,
+				ACF1121520399EE60067B433 /* GoogleService-Info.plist */,
+				ACCDE45E2073B95E00BD8771 /* ProgressHUD.bundle */,
+				ACCDE45F2073B95F00BD8771 /* ProgressHUD.h */,
+				ACCDE4602073B95F00BD8771 /* ProgressHUD.m */,
+				ACCDE45D2073B95D00BD8771 /* Wootis-Bridging-Header.h */,
+				AC289E172086130600BF9550 /* Config.swift */,
 			);
 			path = Wootis;
+			sourceTree = "<group>";
+		};
+		ACE8B7112089588B00BB8656 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AC6DBC311FED5D5D00C62610 /* SignInViewController.swift */,
+				AC11591B1FF56A6F00B30C79 /* SignUpViewController.swift */,
+				ACF1120320397AE90067B433 /* HomeViewController.swift */,
+				ACF1120720397B6F0067B433 /* ProfileViewController.swift */,
+				ACF1120520397B520067B433 /* SearchViewController.swift */,
+				AC3A5D4D208373390085F0CD /* PostViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		ACE8B712208958C600BB8656 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AC6DBC2F1FED5ADF00C62610 /* Start.storyboard */,
+				ACF112092039820E0067B433 /* Main.storyboard */,
+				ACCE6B58204DD80100F1CBEB /* test.storyboard */,
+				AC6DBC261FED59C800C62610 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		ACE8B7152089594C00BB8656 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ACE8B7132089594700BB8656 /* HomeTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C0424F88C4B82F04AAEEBB4A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8672F46D9C6590869CACB5BE /* Pods-Wootis.debug.xcconfig */,
+				B114D64ABE5D76283EF4376B /* Pods-Wootis.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +173,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC6DBC2C1FED59C800C62610 /* Build configuration list for PBXNativeTarget "Wootis" */;
 			buildPhases = (
+				146D48ACAEB6DA40C25A4C97 /* [CP] Check Pods Manifest.lock */,
 				AC6DBC161FED59C800C62610 /* Sources */,
 				AC6DBC171FED59C800C62610 /* Frameworks */,
 				AC6DBC181FED59C800C62610 /* Resources */,
+				C81AEF33C77781A183BD94B9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -96,6 +200,7 @@
 				TargetAttributes = {
 					AC6DBC191FED59C800C62610 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -125,33 +230,96 @@
 			files = (
 				AC6DBC281FED59C800C62610 /* LaunchScreen.storyboard in Resources */,
 				AC6DBC251FED59C800C62610 /* Assets.xcassets in Resources */,
-				AC6DBC231FED59C800C62610 /* Main.storyboard in Resources */,
+				ACCDE4612073B95F00BD8771 /* ProgressHUD.bundle in Resources */,
+				ACF1121620399EE70067B433 /* GoogleService-Info.plist in Resources */,
+				AC6DBC301FED5ADF00C62610 /* Start.storyboard in Resources */,
+				ACCE6B59204DD80100F1CBEB /* test.storyboard in Resources */,
+				ACF1120A2039820E0067B433 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		146D48ACAEB6DA40C25A4C97 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wootis-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C81AEF33C77781A183BD94B9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Wootis/Pods-Wootis-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Hue/Hue.framework",
+				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
+				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hue.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wootis/Pods-Wootis-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AC6DBC161FED59C800C62610 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC6DBC201FED59C800C62610 /* ViewController.swift in Sources */,
+				AC3A5D4E208373390085F0CD /* PostViewController.swift in Sources */,
+				AC289E1B208613AC00BF9550 /* Post.swift in Sources */,
+				ACF1120820397B6F0067B433 /* ProfileViewController.swift in Sources */,
+				ACF1120620397B520067B433 /* SearchViewController.swift in Sources */,
+				ACA4B264205F0371004BFB87 /* AuthServices.swift in Sources */,
+				AC11591C1FF56A6F00B30C79 /* SignUpViewController.swift in Sources */,
+				ACE8B7142089594700BB8656 /* HomeTableViewCell.swift in Sources */,
+				AC6DBC321FED5D5D00C62610 /* SignInViewController.swift in Sources */,
 				AC6DBC1E1FED59C800C62610 /* AppDelegate.swift in Sources */,
+				AC289E182086130600BF9550 /* Config.swift in Sources */,
+				ACCDE4622073B95F00BD8771 /* ProgressHUD.m in Sources */,
+				ACF1120420397AE90067B433 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AC6DBC211FED59C800C62610 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AC6DBC221FED59C800C62610 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AC6DBC261FED59C800C62610 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -272,14 +440,19 @@
 		};
 		AC6DBC2D1FED59C800C62610 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8672F46D9C6590869CACB5BE /* Pods-Wootis.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LX4P693W2D;
 				INFOPLIST_FILE = Wootis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alexlopez.com.Wootis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Wootis/Wootis-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -287,14 +460,18 @@
 		};
 		AC6DBC2E1FED59C800C62610 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B114D64ABE5D76283EF4376B /* Pods-Wootis.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LX4P693W2D;
 				INFOPLIST_FILE = Wootis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alexlopez.com.Wootis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Wootis/Wootis-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
