@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseStorage
 import FirebaseDatabase
+import FirebaseAuth
 import ImagePicker
 import Lightbox
 
@@ -63,7 +64,7 @@ class PostViewController: UIViewController, ImagePickerDelegate {
     @IBAction func share(_ sender: Any) {
         view.endEditing(true)
         ProgressHUD.show("Waiting...", interaction: false)
-        if let profileImg = self.postTwoPhoto.image, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
+        if let profileImg = self.postOnePhoto.image, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
             let photoIdString = NSUUID().uuidString
             let storageRef = Storage.storage().reference(forURL: "gs://wooptis-database.appspot.com").child("posts").child(photoIdString)
             storageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
@@ -72,11 +73,24 @@ class PostViewController: UIViewController, ImagePickerDelegate {
                     return
                 }
                 let postOneUrl = metadata?.downloadURL()?.absoluteString
-                let postTwoUrl = metadata?.downloadURL()?.absoluteString
-                self.sendDataToDatabase(photoOneUrl: postOneUrl!, photoTwoUrl: postTwoUrl!)
+                if let profileImg = self.postTwoPhoto.image, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
+                    let photoIdString = NSUUID().uuidString
+                    let storageRef = Storage.storage().reference(forURL: "gs://wooptis-database.appspot.com").child("posts").child(photoIdString)
+                    storageRef.putData(imageData, metadata: nil, completion: { (metadata, error) in
+                        if error != nil {
+                            ProgressHUD.showError(error!.localizedDescription)
+                            return
+                        }
+                        let postTwoUrl = metadata?.downloadURL()?.absoluteString
+                        
+                        self.sendDataToDatabase(photoOneUrl: postOneUrl!, photoTwoUrl: postTwoUrl!)
+                    })
+                } else {
+                    //ProgressHUD.showError("Images section can't be empty") NO WORKS
+                }
             })
         } else {
-            ProgressHUD.showError("Images section can't be empty")
+            //ProgressHUD.showError("Images section can't be empty") NO WORKS
         }
     }
     
@@ -99,7 +113,11 @@ class PostViewController: UIViewController, ImagePickerDelegate {
         let postsReference = ref.child("posts")
         let newPostId = postsReference.childByAutoId().key
         let newPostReference = postsReference.child(newPostId)
-        newPostReference.setValue(["Title": postTitle.text!, "photoOneTitle": postOneTitle.text!, "photoOneUrl": photoOneUrl, "photoTwoTitle": postTwoTitle.text!, "photoTwoUrl": photoTwoUrl, "comment": postComment.text!], withCompletionBlock: { (error, ref) in
+        guard let currentUser = Auth.auth().currentUser?.uid else {
+            return
+        }
+        let userId = currentUser
+        newPostReference.setValue(["userID": userId, "Title": postTitle.text!, "photoOneTitle": postOneTitle.text!, "photoOneUrl": photoOneUrl, "photoTwoTitle": postTwoTitle.text!, "photoTwoUrl": photoTwoUrl, "comment": postComment.text!], withCompletionBlock: { (error, ref) in
             if error != nil {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
