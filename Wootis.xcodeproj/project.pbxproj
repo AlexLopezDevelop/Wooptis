@@ -13,6 +13,8 @@
 		AC289E1B208613AC00BF9550 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC289E1A208613AC00BF9550 /* Post.swift */; };
 		AC3A5D4E208373390085F0CD /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A5D4D208373390085F0CD /* PostViewController.swift */; };
 		AC3BF4B720B7257800300B2A /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3BF4B620B7257800300B2A /* Users.swift */; };
+		AC3BF4B920B8574200300B2A /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3BF4B820B8574200300B2A /* CommentViewController.swift */; };
+		AC3BF4BB20B857BE00300B2A /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3BF4BA20B857BE00300B2A /* CommentTableViewCell.swift */; };
 		AC6DBC1E1FED59C800C62610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBC1D1FED59C800C62610 /* AppDelegate.swift */; };
 		AC6DBC251FED59C800C62610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6DBC241FED59C800C62610 /* Assets.xcassets */; };
 		AC6DBC281FED59C800C62610 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6DBC261FED59C800C62610 /* LaunchScreen.storyboard */; };
@@ -38,6 +40,8 @@
 		AC289E1A208613AC00BF9550 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		AC3A5D4D208373390085F0CD /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		AC3BF4B620B7257800300B2A /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		AC3BF4B820B8574200300B2A /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		AC3BF4BA20B857BE00300B2A /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		AC6DBC1A1FED59C800C62610 /* Wootis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wootis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6DBC1D1FED59C800C62610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC6DBC241FED59C800C62610 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 			children = (
 				AC6DBC311FED5D5D00C62610 /* SignInViewController.swift */,
 				AC11591B1FF56A6F00B30C79 /* SignUpViewController.swift */,
+				AC3BF4B820B8574200300B2A /* CommentViewController.swift */,
 				ACF1120320397AE90067B433 /* HomeViewController.swift */,
 				ACF1120720397B6F0067B433 /* ProfileViewController.swift */,
 				ACF1120520397B520067B433 /* SearchViewController.swift */,
@@ -156,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				ACE8B7132089594700BB8656 /* HomeTableViewCell.swift */,
+				AC3BF4BA20B857BE00300B2A /* CommentTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -305,12 +311,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC3BF4B920B8574200300B2A /* CommentViewController.swift in Sources */,
 				AC3BF4B720B7257800300B2A /* Users.swift in Sources */,
 				AC3A5D4E208373390085F0CD /* PostViewController.swift in Sources */,
 				AC289E1B208613AC00BF9550 /* Post.swift in Sources */,
 				ACF1120820397B6F0067B433 /* ProfileViewController.swift in Sources */,
 				ACF1120620397B520067B433 /* SearchViewController.swift in Sources */,
 				ACA4B264205F0371004BFB87 /* AuthServices.swift in Sources */,
+				AC3BF4BB20B857BE00300B2A /* CommentTableViewCell.swift in Sources */,
 				AC11591C1FF56A6F00B30C79 /* SignUpViewController.swift in Sources */,
 				ACE8B7142089594700BB8656 /* HomeTableViewCell.swift in Sources */,
 				AC6DBC321FED5D5D00C62610 /* SignInViewController.swift in Sources */,
