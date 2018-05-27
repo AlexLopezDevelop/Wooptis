@@ -108,6 +108,7 @@ class SignUpViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
     //Presses return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         username.resignFirstResponder()

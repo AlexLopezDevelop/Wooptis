@@ -23,28 +23,34 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         loadPosts()
     }
+    
     func loadPosts() {
         loadingIndicator.startAnimating()
-        Database.database().reference().child("posts").observe(.childAdded) { (snapshot: DataSnapshot) in
-            if let path = snapshot.value as? [String: Any] { //[String: Any] != nil
-                let newPost = Post.customPhotoPost(path: path)
-                self.fetchUser(userId: newPost.userId!, completed: {
-                    self.posts.append(newPost)
-                    self.loadingIndicator.stopAnimating()
-                    self.tableView.reloadData() //Refresh table data
-                })
+        Api.Post.observePosts { (post) in
+            guard let postId = post.userId else {
+                return
             }
+            self.fetchUser(userId: postId, completed: {
+                self.posts.append(post)
+                self.loadingIndicator.stopAnimating()
+                self.tableView.reloadData() //Refresh table data
+            })
         }
     }
     
     func fetchUser(userId: String, completed: @escaping () -> Void) {
-        Database.database().reference().child("users").child(userId).observeSingleEvent(of: DataEventType.value, with: { snapshot in
-            if let path = snapshot.value as? [String: Any] {
-                let user = Users.transformUser(path: path)
-                self.users.append(user)
-                completed()
-            }
+        Api.User.observeUsers(withId: userId, completion: { user in
+            self.users.append(user)
+            completed()
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CommentSegue" {
+            let commentViewController = segue.destination as! CommentViewController
+            let postId = sender as! String
+            commentViewController.postId = postId
+        }
     }
     
 }
@@ -60,6 +66,7 @@ extension HomeViewController: UITableViewDataSource {
         let user = users[indexPath.row]
         cell.post = post
         cell.user = user
+        cell.homeViewController = self
         return cell
     }
 }

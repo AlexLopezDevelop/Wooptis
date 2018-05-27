@@ -22,6 +22,8 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var votesAccounts: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
     
+    var homeViewController: HomeViewController?
+    
     var post: Post? {
         didSet {
             refreshData()
@@ -49,7 +51,6 @@ class HomeTableViewCell: UITableViewCell {
         } else {
             postImageTwo.image = UIImage(named: "post-test")
         }
-        userInfo()
     }
     
     func userInfo() {
@@ -64,6 +65,15 @@ class HomeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         Username.text = ""
         commentLabel.text = ""
+        let TapGesture = UITapGestureRecognizer(target: self, action: #selector(self.commentsView_Touch))
+        CommentsView.addGestureRecognizer(TapGesture)
+        CommentsView.isUserInteractionEnabled = true
+    }
+    
+    @objc func commentsView_Touch() {
+        if let id = post?.postId {
+            homeViewController?.performSegue(withIdentifier: "CommentSegue", sender: id)
+        }
     }
     
     override func prepareForReuse() {
