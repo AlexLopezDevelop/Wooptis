@@ -15,9 +15,7 @@ import Lightbox
 
 class PostViewController: UIViewController, ImagePickerDelegate {
     @IBOutlet weak var postTitle: UITextField!
-    @IBOutlet weak var postOneTitle: UITextField!
     @IBOutlet weak var postOnePhoto: UIImageView!
-    @IBOutlet weak var postTwoTitle: UITextField!
     @IBOutlet weak var postTwoPhoto: UIImageView!
     @IBOutlet weak var postComment: UITextView!
     @IBOutlet weak var shareButton: UIButton!
@@ -117,7 +115,7 @@ class PostViewController: UIViewController, ImagePickerDelegate {
             return
         }
         let userId = currentUser
-        newPostReference.setValue(["userID": userId, "Title": postTitle.text!, "photoOneTitle": postOneTitle.text!, "photoOneUrl": photoOneUrl, "photoTwoTitle": postTwoTitle.text!, "photoTwoUrl": photoTwoUrl, "comment": postComment.text!], withCompletionBlock: { (error, ref) in
+        newPostReference.setValue(["userID": userId, "Title": postTitle.text!, "photoOneUrl": photoOneUrl, "photoTwoUrl": photoTwoUrl, "comment": postComment.text!], withCompletionBlock: { (error, ref) in
             if error != nil {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
@@ -137,8 +135,6 @@ class PostViewController: UIViewController, ImagePickerDelegate {
     //Presses return key
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         postTitle.resignFirstResponder()
-        postOneTitle.resignFirstResponder()
-        postTwoTitle.resignFirstResponder()
         postOnePhoto.resignFirstResponder()
         postTwoPhoto.resignFirstResponder()
         return(true)

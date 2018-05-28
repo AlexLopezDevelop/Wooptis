@@ -14,9 +14,8 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var Username: UILabel!
     @IBOutlet weak var postImageOne: UIImageView!
-    @IBOutlet weak var imageOneTitle: UILabel!
+    @IBOutlet weak var postTitle: UILabel!
     @IBOutlet weak var postImageTwo: UIImageView!
-    @IBOutlet weak var imageTwoTitle: UILabel!
     @IBOutlet weak var VoteOneView: UIImageView!
     @IBOutlet weak var VoteTwoView: UIImageView!
     @IBOutlet weak var CommentsView: UIImageView!
@@ -41,8 +40,7 @@ class HomeTableViewCell: UITableViewCell {
     
     func refreshData() {
         commentLabel.text = post?.comment
-        imageOneTitle.text = post?.photoOneTitle
-        imageTwoTitle.text = post?.photoTwoTtitle
+        postTitle.text = post?.postTitle
         if let photoOneImageString = post?.photoOneUrl {
             let photoOneUrl = URL(string: photoOneImageString)
             postImageOne.sd_setImage(with: photoOneUrl)
@@ -55,6 +53,12 @@ class HomeTableViewCell: UITableViewCell {
             postImageTwo.image = UIImage(named: "post-test")
         }
         
+        updateVote(post: post!)
+        Api.Post.REF_POSTS.child(post!.postId!).observe(.childChanged, with: { snapshot in
+            if let value = snapshot.value as? Int {
+                self.votesAccounts.setTitle("\(value) votes", for: UIControlState.normal)
+            }
+        })
         /*if let currentUser = Auth.auth().currentUser {
             Api.User.REF_USERS.child((currentUser.uid)).child("votes").child((post?.postId)!).observeSingleEvent(of: .value, with: { snapshot in
                 if let _ = snapshot.value as? NSNull {
@@ -68,6 +72,19 @@ class HomeTableViewCell: UITableViewCell {
                 }
             })
         }*/
+    }
+    
+    func updateVote(post: Post) {
+        let imageName = post.votes == nil || !post.isVoted! ? "vote" : "voted"
+        VoteOneView.image = UIImage(named: imageName)
+        guard let count = post.voteCount else {
+            return
+        }
+        if count != 0 {
+            votesAccounts.setTitle("\(count) votes", for: UIControlState.normal)
+        } else {
+            votesAccounts.setTitle("Do the first vote this", for: UIControlState.normal)
+        }
     }
     
     func userInfo() {
@@ -90,9 +107,9 @@ class HomeTableViewCell: UITableViewCell {
         VoteOneView.addGestureRecognizer(TapGestureVoteOne)
         VoteOneView.isUserInteractionEnabled = true
         
-        let TapGestureVoteTwo = UITapGestureRecognizer(target: self, action: #selector(self.VoteTwoView_Touch))
+        /*let TapGestureVoteTwo = UITapGestureRecognizer(target: self, action: #selector(self.VoteTwoView_Touch))
         VoteTwoView.addGestureRecognizer(TapGestureVoteTwo)
-        VoteTwoView.isUserInteractionEnabled = true
+        VoteTwoView.isUserInteractionEnabled = true*/
     }
     
     @objc func commentsView_Touch() {
@@ -140,7 +157,6 @@ class HomeTableViewCell: UITableViewCell {
     func incrementVotes(forRef ref: DatabaseReference) { //Firebase Transactions
         ref.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
             if var post = currentData.value as? [String : AnyObject], let uid = Auth.auth().currentUser?.uid {
-                print("value 1: \(currentData.value)")
                 var votes: Dictionary<String, Bool>
                 votes = post["votes"] as? [String : Bool] ?? [:]
                 var votesCount = post["votesCount"] as? Int ?? 0
@@ -166,7 +182,10 @@ class HomeTableViewCell: UITableViewCell {
             if let error = error {
                 print(error.localizedDescription)
             }
-            print("value 2: \(snapshot?.value)")
+            if let path = snapshot?.value as? [String: Any] {
+                let post = Post.customPhotoPost(path: path, key: snapshot!.key)
+                self.updateVote(post: post)
+            }
         }
     }
     

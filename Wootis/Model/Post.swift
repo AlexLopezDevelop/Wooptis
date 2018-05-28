@@ -7,14 +7,18 @@
 //
 
 import Foundation
+import FirebaseAuth
+
 class Post {
     var userId: String?
     var postId: String?
     var comment: String?
     var photoOneUrl: String?
     var photoTwoUrl: String?
-    var photoOneTitle: String?
-    var photoTwoTtitle: String?
+    var postTitle: String?
+    var voteCount: Int?
+    var votes: Dictionary<String, Any>?
+    var isVoted: Bool?
 }
 
 extension Post {
@@ -25,8 +29,14 @@ extension Post {
         post.comment = path["comment"] as? String
         post.photoOneUrl = path["photoOneUrl"] as? String
         post.photoTwoUrl = path["photoTwoUrl"] as? String
-        post.photoOneTitle = path["photoOneTitle"] as? String
-        post.photoTwoTtitle = path["photoTwoTitle"] as? String
+        post.postTitle = path["Title"] as? String
+        post.voteCount = path["votesCount"] as? Int
+        post.votes = path["votes"] as? Dictionary<String, Any>
+        if let currentUserId = Auth.auth().currentUser?.uid {
+            if post.votes != nil {
+                post.isVoted = post.votes![currentUserId] != nil
+            }
+        }
         return post
     }
     
