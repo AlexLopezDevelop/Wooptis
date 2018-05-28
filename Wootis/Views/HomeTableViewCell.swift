@@ -59,7 +59,7 @@ class HomeTableViewCell: UITableViewCell {
                 if let _ = snapshot.value as? NSNull {
                     self.VoteOneView.image = UIImage(named: "vote")
                 } else {
-                    if snapshot.value == "first"{
+                    if snapshot.value as! String == "first"{
                         self.VoteOneView.image = UIImage(named: "voted")
                     } else {
                         self.VoteTwoView.image = UIImage(named: "voted")
