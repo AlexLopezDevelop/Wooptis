@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		23B842DA3EBA5AC3218C75FA /* Pods_Wootis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7960411884A0D9FEEE21E0DD /* Pods_Wootis.framework */; };
+		4B85E46320BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85E46220BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift */; };
+		4B85E46520BDA1AD00E8E3D4 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85E46420BDA1AD00E8E3D4 /* NavigatorViewController.swift */; };
 		AC11591C1FF56A6F00B30C79 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11591B1FF56A6F00B30C79 /* SignUpViewController.swift */; };
 		AC289E182086130600BF9550 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC289E172086130600BF9550 /* Config.swift */; };
 		AC289E1B208613AC00BF9550 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC289E1A208613AC00BF9550 /* Post.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B85E46220BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProfileCollectionReusableView.swift; sourceTree = "<group>"; };
+		4B85E46420BDA1AD00E8E3D4 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
 		7960411884A0D9FEEE21E0DD /* Pods_Wootis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wootis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8672F46D9C6590869CACB5BE /* Pods-Wootis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wootis.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wootis/Pods-Wootis.debug.xcconfig"; sourceTree = "<group>"; };
 		AC11591B1FF56A6F00B30C79 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 				ACF1120720397B6F0067B433 /* ProfileViewController.swift */,
 				ACF1120520397B520067B433 /* SearchViewController.swift */,
 				AC3A5D4D208373390085F0CD /* PostViewController.swift */,
+				4B85E46420BDA1AD00E8E3D4 /* NavigatorViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 			children = (
 				ACE8B7132089594700BB8656 /* HomeTableViewCell.swift */,
 				AC3BF4BA20B857BE00300B2A /* CommentTableViewCell.swift */,
+				4B85E46220BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 			files = (
 				AC3BF4B920B8574200300B2A /* CommentViewController.swift in Sources */,
 				AC3BF4B720B7257800300B2A /* Users.swift in Sources */,
+				4B85E46320BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift in Sources */,
 				AC3A5D4E208373390085F0CD /* PostViewController.swift in Sources */,
 				AC3BF4C320BAEEFF00300B2A /* Api.swift in Sources */,
 				AC289E1B208613AC00BF9550 /* Post.swift in Sources */,
@@ -344,6 +351,7 @@
 				AC6DBC321FED5D5D00C62610 /* SignInViewController.swift in Sources */,
 				AC3BF4C520BAEFC100300B2A /* CommentApi.swift in Sources */,
 				AC3BF4BD20BAA33A00300B2A /* Comment.swift in Sources */,
+				4B85E46520BDA1AD00E8E3D4 /* NavigatorViewController.swift in Sources */,
 				AC3BF4C120BAEC5500300B2A /* UserpApi.swift in Sources */,
 				AC6DBC1E1FED59C800C62610 /* AppDelegate.swift in Sources */,
 				AC289E182086130600BF9550 /* Config.swift in Sources */,
