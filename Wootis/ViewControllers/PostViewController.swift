@@ -120,6 +120,13 @@ class PostViewController: UIViewController, ImagePickerDelegate {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
+            
+            let myPostRef = Api.MyPost.REF_MY_POSTS.child(userId).child(newPostId)
+            myPostRef.setValue(true, withCompletionBlock: { (error, ref) in
+                if error != nil {
+                    ProgressHUD.showError(error!.localizedDescription)
+                }
+            })
             ProgressHUD.showSuccess("Success")
             self.postComment.text = ""
             self.postOnePhoto.image = UIImage(named: "img-default")
@@ -140,4 +147,18 @@ class PostViewController: UIViewController, ImagePickerDelegate {
         return(true)
     }
     
+}
+
+extension ProfileViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.size.width / 3 - 1, height: collectionView.frame.size.width / 3 - 1)
+    }
 }

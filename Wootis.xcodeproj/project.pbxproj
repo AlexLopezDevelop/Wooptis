@@ -10,6 +10,8 @@
 		23B842DA3EBA5AC3218C75FA /* Pods_Wootis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7960411884A0D9FEEE21E0DD /* Pods_Wootis.framework */; };
 		4B85E46320BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85E46220BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift */; };
 		4B85E46520BDA1AD00E8E3D4 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85E46420BDA1AD00E8E3D4 /* NavigatorViewController.swift */; };
+		4B85E46720BDB57100E8E3D4 /* MyPostApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85E46620BDB57100E8E3D4 /* MyPostApi.swift */; };
+		4B85E46920BDBF4000E8E3D4 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85E46820BDBF4000E8E3D4 /* PhotoCollectionViewCell.swift */; };
 		AC11591C1FF56A6F00B30C79 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11591B1FF56A6F00B30C79 /* SignUpViewController.swift */; };
 		AC289E182086130600BF9550 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC289E172086130600BF9550 /* Config.swift */; };
 		AC289E1B208613AC00BF9550 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC289E1A208613AC00BF9550 /* Post.swift */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		4B85E46220BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProfileCollectionReusableView.swift; sourceTree = "<group>"; };
 		4B85E46420BDA1AD00E8E3D4 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
+		4B85E46620BDB57100E8E3D4 /* MyPostApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostApi.swift; sourceTree = "<group>"; };
+		4B85E46820BDBF4000E8E3D4 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		7960411884A0D9FEEE21E0DD /* Pods_Wootis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wootis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8672F46D9C6590869CACB5BE /* Pods-Wootis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wootis.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wootis/Pods-Wootis.debug.xcconfig"; sourceTree = "<group>"; };
 		AC11591B1FF56A6F00B30C79 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 				AC289E1A208613AC00BF9550 /* Post.swift */,
 				AC3BF4BC20BAA33A00300B2A /* Comment.swift */,
 				AC3BF4B620B7257800300B2A /* Users.swift */,
+				4B85E46820BDBF4000E8E3D4 /* PhotoCollectionViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 				AC3BF4BE20BAE65400300B2A /* PostApi.swift */,
 				AC3BF4C420BAEFC100300B2A /* CommentApi.swift */,
 				AC3BF4C620BAF3F700300B2A /* Post_CommentApi.swift */,
+				4B85E46620BDB57100E8E3D4 /* MyPostApi.swift */,
 				AC289E192086136400BF9550 /* Model */,
 				ACE8B7112089588B00BB8656 /* ViewControllers */,
 				ACE8B7152089594C00BB8656 /* Views */,
@@ -335,11 +341,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B85E46720BDB57100E8E3D4 /* MyPostApi.swift in Sources */,
 				AC3BF4B920B8574200300B2A /* CommentViewController.swift in Sources */,
 				AC3BF4B720B7257800300B2A /* Users.swift in Sources */,
 				4B85E46320BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift in Sources */,
 				AC3A5D4E208373390085F0CD /* PostViewController.swift in Sources */,
 				AC3BF4C320BAEEFF00300B2A /* Api.swift in Sources */,
+				4B85E46920BDBF4000E8E3D4 /* PhotoCollectionViewCell.swift in Sources */,
 				AC289E1B208613AC00BF9550 /* Post.swift in Sources */,
 				ACF1120820397B6F0067B433 /* ProfileViewController.swift in Sources */,
 				ACF1120620397B520067B433 /* SearchViewController.swift in Sources */,
