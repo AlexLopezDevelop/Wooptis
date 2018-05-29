@@ -89,6 +89,7 @@ class CommentViewController: UIViewController {
     func loadComments() {
         Api.Post_Comment.REF_POSTS_COMMENTS.child(self.postId).observe(.childAdded, with: { snapshot in
             Api.Comment.observeComments(withPostId: snapshot.key, completion: { comment in
+                print(comment)
             self.fetchUser(userId: comment.userId!, completed: {
                     self.comments.append(comment)
                     self.tableView.reloadData()
