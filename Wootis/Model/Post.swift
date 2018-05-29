@@ -16,7 +16,8 @@ class Post {
     var photoOneUrl: String?
     var photoTwoUrl: String?
     var postTitle: String?
-    var voteCount: Int?
+    var voteFirstCount: Int?
+    var voteSecondCount: Int?
     var votes: Dictionary<String, Any>?
     var isVoted: Bool?
 }
@@ -30,7 +31,8 @@ extension Post {
         post.photoOneUrl = path["photoOneUrl"] as? String
         post.photoTwoUrl = path["photoTwoUrl"] as? String
         post.postTitle = path["Title"] as? String
-        post.voteCount = path["votesCount"] as? Int
+        post.voteFirstCount = path["votesCountFirst"] as? Int
+        post.voteSecondCount = path["votesCountSecond"] as? Int
         post.votes = path["votes"] as? Dictionary<String, Any>
         if let currentUserId = Auth.auth().currentUser?.uid {
             if post.votes != nil {

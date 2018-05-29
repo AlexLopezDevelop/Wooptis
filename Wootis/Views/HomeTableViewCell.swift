@@ -20,7 +20,8 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var VoteTwoView: UIImageView!
     @IBOutlet weak var CommentsView: UIImageView!
     @IBOutlet weak var shareView: UIImageView!
-    @IBOutlet weak var votesAccounts: UIButton!
+    @IBOutlet weak var votesFirstAccounts: UIButton!
+    @IBOutlet weak var votesSecondAccounts: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
     
     var homeViewController: HomeViewController?
@@ -53,38 +54,79 @@ class HomeTableViewCell: UITableViewCell {
             postImageTwo.image = UIImage(named: "post-test")
         }
         
-        updateVote(post: post!)
-        Api.Post.REF_POSTS.child(post!.postId!).observe(.childChanged, with: { snapshot in
-            if let value = snapshot.value as? Int {
-                self.votesAccounts.setTitle("\(value) votes", for: UIControlState.normal)
+        Api.Post.REF_POSTS.child(post!.postId!).observeSingleEvent(of: .value, with: { snapshot in
+            if let path = snapshot.value as? [String: Any] {
+                let post = Post.customPhotoPost(path: path, key: snapshot.key)
+                self.updateVote(post: post)
             }
         })
-        /*if let currentUser = Auth.auth().currentUser {
-            Api.User.REF_USERS.child((currentUser.uid)).child("votes").child((post?.postId)!).observeSingleEvent(of: .value, with: { snapshot in
-                if let _ = snapshot.value as? NSNull {
-                    self.VoteOneView.image = UIImage(named: "vote")
-                } else {
-                    if snapshot.value as! String == "first"{
-                        self.VoteOneView.image = UIImage(named: "voted")
+        updateVote(post: post!)
+        Api.Post.REF_POSTS.child(post!.postId!).observe(.value, with: { snapshot in
+            
+            if let path = snapshot.value as? [String: Any] {
+                if path["votesCountFirst"] != nil && path["votesCountSecond"] != nil {
+                    let votesFirst = path["votesCountFirst"] as! Int
+                    let votesSecond = path["votesCountSecond"] as! Int
+                    if votesFirst != 0 {
+                        self.votesFirstAccounts.setTitle("\(votesFirst) votes", for: UIControlState.normal)
                     } else {
-                        self.VoteTwoView.image = UIImage(named: "voted")
+                        self.votesFirstAccounts.setTitle("Vote First!", for: UIControlState.normal)
+                    }
+                    if votesSecond != 0 {
+                        self.votesSecondAccounts.setTitle("\(votesSecond) votes", for: UIControlState.normal)
+                    } else {
+                        self.votesSecondAccounts.setTitle("Vote First!", for: UIControlState.normal)
                     }
                 }
-            })
-        }*/
+            }
+            /*if let path = snapshot.value as? [String: Any] {
+                
+                print(path["Zeb5SESTeRQv4vZusvF5pLuIIuj1"] as! String)
+            }*/
+            
+       
+
+            if let value = snapshot.value as? Int {
+                    self.votesFirstAccounts.setTitle("\(value) votes", for: UIControlState.normal)
+            }
+        })
     }
     
     func updateVote(post: Post) {
         let imageName = post.votes == nil || !post.isVoted! ? "vote" : "voted"
-        VoteOneView.image = UIImage(named: imageName)
-        guard let count = post.voteCount else {
-            return
-        }
-        if count != 0 {
-            votesAccounts.setTitle("\(count) votes", for: UIControlState.normal)
+        let imageNameOposite = imageName == "vote" ? "voted" : "vote"
+        if post.votes?.values.description != nil {
+            let photoVoted = post.votes?.values.description
+            if photoVoted == "[first]" {
+                VoteOneView.image = UIImage(named: imageName)
+                VoteTwoView.image = UIImage(named: imageNameOposite)
+            } else if photoVoted == "[second]" {
+                VoteTwoView.image = UIImage(named: imageName)
+                VoteOneView.image = UIImage(named: imageNameOposite)
+            }
         } else {
-            votesAccounts.setTitle("Do the first vote this", for: UIControlState.normal)
+            VoteTwoView.image = UIImage(named: imageName)
+            VoteOneView.image = UIImage(named: imageName)
         }
+        
+        if post.voteFirstCount != nil {
+            let count = post.voteFirstCount
+            if count != 0 {
+                votesFirstAccounts.setTitle("\(count!) votes", for: UIControlState.normal)
+            } else {
+                votesFirstAccounts.setTitle("Vote First!", for: UIControlState.normal)
+            }
+        }
+        
+        if post.voteSecondCount != nil {
+            let count = post.voteSecondCount
+            if count != 0 {
+                votesSecondAccounts.setTitle("\(count!) votes", for: UIControlState.normal)
+            } else {
+                votesSecondAccounts.setTitle("Vote First!", for: UIControlState.normal)
+            }
+        }
+        
     }
     
     func userInfo() {
@@ -107,9 +149,9 @@ class HomeTableViewCell: UITableViewCell {
         VoteOneView.addGestureRecognizer(TapGestureVoteOne)
         VoteOneView.isUserInteractionEnabled = true
         
-        /*let TapGestureVoteTwo = UITapGestureRecognizer(target: self, action: #selector(self.VoteTwoView_Touch))
+        let TapGestureVoteTwo = UITapGestureRecognizer(target: self, action: #selector(self.VoteTwoView_Touch))
         VoteTwoView.addGestureRecognizer(TapGestureVoteTwo)
-        VoteTwoView.isUserInteractionEnabled = true*/
+        VoteTwoView.isUserInteractionEnabled = true
     }
     
     @objc func commentsView_Touch() {
@@ -120,56 +162,45 @@ class HomeTableViewCell: UITableViewCell {
     
     @objc func VoteOneView_Touch() {
         postRef = Api.Post.REF_POSTS.child(post!.postId!)
-        incrementVotes(forRef: postRef)
-        /*if let currentUser = Auth.auth().currentUser {
-            Api.User.REF_USERS.child((currentUser.uid)).child("votes").child((post?.postId)!).observeSingleEvent(of: .value, with: { snapshot in
-                if let _ = snapshot.value as? NSNull {
-                    Api.User.REF_USERS.child(currentUser.uid).child("votes").child(self.post!.postId!).setValue("first")
-                    self.VoteOneView.image = UIImage(named: "voted")
-                } else {
-                    Api.User.REF_USERS.child(currentUser.uid).child("votes").child(self.post!.postId!).removeValue()
-                    if self.VoteTwoView.image == UIImage(named: "voted"){
-                        self.VoteTwoView.image = UIImage(named: "vote")
-                    }
-                    self.VoteOneView.image = UIImage(named: "vote")
-                }
-            })
-        }*/
+        incrementVotes(forRef: postRef, photoVoted: "first")
     }
     
     @objc func VoteTwoView_Touch() {
-        if let currentUser = Auth.auth().currentUser {
-            Api.User.REF_USERS.child((currentUser.uid)).child("votes").child((post?.postId)!).observeSingleEvent(of: .value, with: { snapshot in
-                if let _ = snapshot.value as? NSNull {
-                    Api.User.REF_USERS.child(currentUser.uid).child("votes").child(self.post!.postId!).setValue("second")
-                    self.VoteTwoView.image = UIImage(named: "voted")
-                } else {
-                    Api.User.REF_USERS.child(currentUser.uid).child("votes").child(self.post!.postId!).removeValue()
-                    if self.VoteOneView.image == UIImage(named: "voted"){
-                        self.VoteOneView.image = UIImage(named: "vote")
-                    }
-                    self.VoteTwoView.image = UIImage(named: "vote")
-                }
-            })
-        }
+        postRef = Api.Post.REF_POSTS.child(post!.postId!)
+        incrementVotes(forRef: postRef, photoVoted: "second")
     }
     
-    func incrementVotes(forRef ref: DatabaseReference) { //Firebase Transactions
+    func incrementVotes(forRef ref: DatabaseReference, photoVoted: String) { //Firebase Transactions
         ref.runTransactionBlock({ (currentData: MutableData) -> TransactionResult in
             if var post = currentData.value as? [String : AnyObject], let uid = Auth.auth().currentUser?.uid {
-                var votes: Dictionary<String, Bool>
-                votes = post["votes"] as? [String : Bool] ?? [:]
-                var votesCount = post["votesCount"] as? Int ?? 0
+                var votes: Dictionary<String, String>
+                votes = post["votes"] as? [String : String] ?? [:]
+                var votesCountFirst = post["votesCountFirst"] as? Int ?? 0
+                var votesCountSecond = post["votesCountSecond"] as? Int ?? 0
                 if let _ = votes[uid] {
                     // Unstar the post and remove self from stars
-                    votesCount -= 1
+                    if votes[uid]!  == "first" {
+                        votesCountFirst -= 1
+                        post["votesCountFirst"] = votesCountFirst as AnyObject?
+                    } else if votes[uid]! == "second"{
+                        votesCountSecond -= 1
+                        post["votesCountSecond"] = votesCountSecond as AnyObject?
+                    }
                     votes.removeValue(forKey: uid)
                 } else {
                     // Star the post and add self to stars
-                    votesCount += 1
-                    votes[uid] = true
+                    if photoVoted == "first" {
+                        votesCountFirst += 1
+                        post["votesCountFirst"] = votesCountFirst as AnyObject?
+                    } else if photoVoted == "second" {
+                        votesCountSecond += 1
+                        post["votesCountSecond"] = votesCountSecond as AnyObject?
+                    }
+                    
+                    votes[uid] = photoVoted
                 }
-                post["votesCount"] = votesCount as AnyObject?
+                
+                
                 post["votes"] = votes as AnyObject?
                 
                 // Set value and report transaction success
