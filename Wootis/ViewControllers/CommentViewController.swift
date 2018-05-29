@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 
 class CommentViewController: UIViewController {
     @IBOutlet weak var commentLabel: UITextField!
@@ -66,7 +64,7 @@ class CommentViewController: UIViewController {
         let commentsReference = Api.Comment.REF_COMMENTS
         let newCommentId = commentsReference.childByAutoId().key
         let newCommentReference = commentsReference.child(newCommentId)
-        guard let currentUser = Auth.auth().currentUser?.uid else {
+        guard let currentUser = Api.User.CURRENT_USER else {
             return
         }
         let userId = currentUser

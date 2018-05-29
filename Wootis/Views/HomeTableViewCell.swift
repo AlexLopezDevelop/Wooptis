@@ -79,12 +79,6 @@ class HomeTableViewCell: UITableViewCell {
                     }
                 }
             }
-            /*if let path = snapshot.value as? [String: Any] {
-                
-                print(path["Zeb5SESTeRQv4vZusvF5pLuIIuj1"] as! String)
-            }*/
-            
-       
 
             if let value = snapshot.value as? Int {
                     self.votesFirstAccounts.setTitle("\(value) votes", for: UIControlState.normal)

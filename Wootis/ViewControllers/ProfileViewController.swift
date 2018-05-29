@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
@@ -25,14 +24,12 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func logOut(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-        } catch let logOutError{
-            print(logOutError)
+        AuthServices.logout(onSuccess: {
+            let storyboard =  UIStoryboard(name: "Start", bundle: nil)
+            let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
+        }) { (errorMessage) in
+            ProgressHUD.showError(errorMessage)
         }
-        let storyboard =  UIStoryboard(name: "Start", bundle: nil)
-        let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-        self.present(signInVC, animated: true, completion: nil)
     }
     
     func fetchUser() {
@@ -43,12 +40,11 @@ class ProfileViewController: UIViewController {
     }
     
     func fetchMyPosts() {
-        guard let currentUser = Auth.auth().currentUser else {
+        guard let currentUser = Api.User.CURRENT_USER else {
             return
         }
         Api.MyPost.REF_MY_POSTS.child(currentUser.uid).observe(.childAdded, with: { snapshot in
             Api.Post.observePost(with: snapshot.key, completion: { postData in
-                print(postData.postId)
                 self.posts.append(postData)
                 self.collectionView.reloadData()
             })
