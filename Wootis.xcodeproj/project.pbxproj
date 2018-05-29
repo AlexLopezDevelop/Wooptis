@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23B842DA3EBA5AC3218C75FA /* Pods_Wootis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7960411884A0D9FEEE21E0DD /* Pods_Wootis.framework */; };
+		4B684E8B20BDDE37000298C2 /* UIBotones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B684E8A20BDDE37000298C2 /* UIBotones.swift */; };
 		4B85E46320BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85E46220BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift */; };
 		4B85E46520BDA1AD00E8E3D4 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85E46420BDA1AD00E8E3D4 /* NavigatorViewController.swift */; };
 		4B85E46720BDB57100E8E3D4 /* MyPostApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85E46620BDB57100E8E3D4 /* MyPostApi.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B684E8A20BDDE37000298C2 /* UIBotones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBotones.swift; sourceTree = "<group>"; };
 		4B85E46220BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProfileCollectionReusableView.swift; sourceTree = "<group>"; };
 		4B85E46420BDA1AD00E8E3D4 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
 		4B85E46620BDB57100E8E3D4 /* MyPostApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostApi.swift; sourceTree = "<group>"; };
@@ -104,6 +106,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4B684E8920BDDE05000298C2 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				4B684E8A20BDDE37000298C2 /* UIBotones.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		AC289E192086136400BF9550 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +146,7 @@
 		AC6DBC1C1FED59C800C62610 /* Wootis */ = {
 			isa = PBXGroup;
 			children = (
+				4B684E8920BDDE05000298C2 /* Styles */,
 				AC6DBC1D1FED59C800C62610 /* AppDelegate.swift */,
 				ACA4B263205F0370004BFB87 /* AuthServices.swift */,
 				AC3BF4C220BAEEFF00300B2A /* Api.swift */,
@@ -359,6 +370,7 @@
 				AC6DBC321FED5D5D00C62610 /* SignInViewController.swift in Sources */,
 				AC3BF4C520BAEFC100300B2A /* CommentApi.swift in Sources */,
 				AC3BF4BD20BAA33A00300B2A /* Comment.swift in Sources */,
+				4B684E8B20BDDE37000298C2 /* UIBotones.swift in Sources */,
 				4B85E46520BDA1AD00E8E3D4 /* NavigatorViewController.swift in Sources */,
 				AC3BF4C120BAEC5500300B2A /* UserpApi.swift in Sources */,
 				AC6DBC1E1FED59C800C62610 /* AppDelegate.swift in Sources */,

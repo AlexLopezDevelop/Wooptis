@@ -395,16 +395,28 @@
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="133"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZFc-ho-kPI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="133"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ck3-q1-5ER">
+                                                    <rect key="frame" x="68" y="0.0" width="72" height="133"/>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ck3-q1-5ER">
-                                                    <rect key="frame" x="70" y="0.0" width="70" height="133"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZFc-ho-kPI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="133"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="NFw-S3-hrc"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="ck3-q1-5ER" firstAttribute="leading" secondItem="ZFc-ho-kPI" secondAttribute="trailing" id="2dV-6o-O88"/>
+                                            <constraint firstItem="ZFc-ho-kPI" firstAttribute="top" secondItem="ck3-q1-5ER" secondAttribute="top" id="2ob-bq-cT9"/>
+                                            <constraint firstItem="ZFc-ho-kPI" firstAttribute="top" secondItem="2jy-NR-Jtz" secondAttribute="top" id="5rX-VL-3zL"/>
+                                            <constraint firstItem="ZFc-ho-kPI" firstAttribute="bottom" secondItem="ck3-q1-5ER" secondAttribute="bottom" id="ECN-7Z-asu"/>
+                                            <constraint firstItem="ZFc-ho-kPI" firstAttribute="leading" secondItem="2jy-NR-Jtz" secondAttribute="leading" id="Hwk-kY-PCe"/>
+                                            <constraint firstItem="ck3-q1-5ER" firstAttribute="width" secondItem="ZFc-ho-kPI" secondAttribute="width" id="Mce-Vo-bmF"/>
+                                            <constraint firstAttribute="trailing" secondItem="ck3-q1-5ER" secondAttribute="trailing" id="Xko-aa-Ki5"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZFc-ho-kPI" secondAttribute="bottom" id="saS-ki-Q3l"/>
+                                        </constraints>
+                                        <size key="customSize" width="140" height="133"/>
                                         <connections>
                                             <outlet property="postImageOne" destination="ZFc-ho-kPI" id="omM-GJ-0HI"/>
                                             <outlet property="postImageTwo" destination="ck3-q1-5ER" id="pQI-YN-uQx"/>
@@ -429,7 +441,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fj0-Ip-WTN">
                                             <rect key="frame" x="123" y="15" width="181" height="100"/>
                                             <subviews>
-                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QV3-9I-2jd">
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QV3-9I-2jd" customClass="UIBotones" customModule="Wootis" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="70" width="181" height="30"/>
                                                     <color key="backgroundColor" red="0.88627450980392153" green="0.89411764705882346" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
@@ -439,6 +451,9 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
