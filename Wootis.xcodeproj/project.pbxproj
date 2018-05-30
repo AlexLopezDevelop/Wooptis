@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23B842DA3EBA5AC3218C75FA /* Pods_Wootis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7960411884A0D9FEEE21E0DD /* Pods_Wootis.framework */; };
+		4B40194620BEE1FF00AB6745 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B40194520BEE1FF00AB6745 /* PeopleViewController.swift */; };
 		4B684E8B20BDDE37000298C2 /* UIBotones.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B684E8A20BDDE37000298C2 /* UIBotones.swift */; };
 		4B85E46320BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85E46220BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift */; };
 		4B85E46520BDA1AD00E8E3D4 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B85E46420BDA1AD00E8E3D4 /* NavigatorViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B40194520BEE1FF00AB6745 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		4B684E8A20BDDE37000298C2 /* UIBotones.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBotones.swift; sourceTree = "<group>"; };
 		4B85E46220BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProfileCollectionReusableView.swift; sourceTree = "<group>"; };
 		4B85E46420BDA1AD00E8E3D4 /* NavigatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				ACF1120520397B520067B433 /* SearchViewController.swift */,
 				AC3A5D4D208373390085F0CD /* PostViewController.swift */,
 				4B85E46420BDA1AD00E8E3D4 /* NavigatorViewController.swift */,
+				4B40194520BEE1FF00AB6745 /* PeopleViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				AC3BF4C120BAEC5500300B2A /* UserpApi.swift in Sources */,
 				AC6DBC1E1FED59C800C62610 /* AppDelegate.swift in Sources */,
 				AC289E182086130600BF9550 /* Config.swift in Sources */,
+				4B40194620BEE1FF00AB6745 /* PeopleViewController.swift in Sources */,
 				ACCDE4622073B95F00BD8771 /* ProgressHUD.m in Sources */,
 				ACF1120420397AE90067B433 /* HomeViewController.swift in Sources */,
 				AC3BF4BF20BAE65400300B2A /* PostApi.swift in Sources */,

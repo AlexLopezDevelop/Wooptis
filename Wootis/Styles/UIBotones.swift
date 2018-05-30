@@ -30,7 +30,7 @@ class UIBotones: UIButton {
     
     override var backgroundColor: UIColor? {
         didSet {
-           self.layer.backgroundColor = UIColor.blue.cgColor
+           //self.layer.backgroundColor = UIColor.blue.cgColor
         }
     }
     

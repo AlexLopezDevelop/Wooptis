@@ -38,6 +38,7 @@ class ProfileViewController: UIViewController {
     func fetchUser() {
         Api.User.observCurrentUser { (user) in
             self.user = user
+            self.title = user.username
             self.collectionView.reloadData()
         }
     }
