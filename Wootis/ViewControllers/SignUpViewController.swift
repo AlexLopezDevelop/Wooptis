@@ -41,7 +41,7 @@ class SignUpViewController: UIViewController {
     @IBAction func singUp(_ sender: Any) {
         self.view.endEditing(true)
         ProgressHUD.show("Watting...", interaction: false)
-        AuthServices.signUp(username: username.text!, email: email.text!, password: password1.text!, birthdate: birthdate.text!, sex: sex.text!, onSuccess: {
+        AuthServices.signUp(username: username.text!, email: email.text!, password: password1.text!, birthdate: birthdate.text!, phone: phone.text!, sex: sex.text!, onSuccess: {
             ProgressHUD.showSuccess("Success")
             self.dismiss(animated: true, completion: nil)
         }, onError: { error in

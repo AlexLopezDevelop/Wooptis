@@ -37,6 +37,7 @@
 		AC76AC9D20BF3D6F00BD3129 /* FeedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76AC9C20BF3D6F00BD3129 /* FeedApi.swift */; };
 		AC76AC9F20BF4ACE00BD3129 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76AC9E20BF4ACE00BD3129 /* DiscoverViewController.swift */; };
 		AC76ACA120BFFBA300BD3129 /* ProfileUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76ACA020BFFBA300BD3129 /* ProfileUserViewController.swift */; };
+		AC76ACA320C0481E00BD3129 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76ACA220C0481E00BD3129 /* SettingTableViewController.swift */; };
 		ACA4B264205F0371004BFB87 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA4B263205F0370004BFB87 /* AuthServices.swift */; };
 		ACCDE4612073B95F00BD8771 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ACCDE45E2073B95E00BD8771 /* ProgressHUD.bundle */; };
 		ACCDE4622073B95F00BD8771 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCDE4602073B95F00BD8771 /* ProgressHUD.m */; };
@@ -83,6 +84,7 @@
 		AC76AC9C20BF3D6F00BD3129 /* FeedApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedApi.swift; sourceTree = "<group>"; };
 		AC76AC9E20BF4ACE00BD3129 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		AC76ACA020BFFBA300BD3129 /* ProfileUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserViewController.swift; sourceTree = "<group>"; };
+		AC76ACA220C0481E00BD3129 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		ACA4B263205F0370004BFB87 /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		ACCDE45D2073B95D00BD8771 /* Wootis-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wootis-Bridging-Header.h"; sourceTree = "<group>"; };
 		ACCDE45E2073B95E00BD8771 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				AC3A5D4D208373390085F0CD /* PostViewController.swift */,
 				4B85E46420BDA1AD00E8E3D4 /* NavigatorViewController.swift */,
 				4B40194520BEE1FF00AB6745 /* PeopleViewController.swift */,
+				AC76ACA220C0481E00BD3129 /* SettingTableViewController.swift */,
 				AC76AC9E20BF4ACE00BD3129 /* DiscoverViewController.swift */,
 				AC76ACA020BFFBA300BD3129 /* ProfileUserViewController.swift */,
 			);
@@ -388,6 +391,7 @@
 				AC11591C1FF56A6F00B30C79 /* SignUpViewController.swift in Sources */,
 				AC76AC9B20BEF15E00BD3129 /* FollowApi.swift in Sources */,
 				ACE8B7142089594700BB8656 /* HomeTableViewCell.swift in Sources */,
+				AC76ACA320C0481E00BD3129 /* SettingTableViewController.swift in Sources */,
 				AC6DBC321FED5D5D00C62610 /* SignInViewController.swift in Sources */,
 				AC3BF4C520BAEFC100300B2A /* CommentApi.swift in Sources */,
 				AC3BF4BD20BAA33A00300B2A /* Comment.swift in Sources */,

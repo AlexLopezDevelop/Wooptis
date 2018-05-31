@@ -22,7 +22,7 @@ class AuthServices {
         })
     }
     
-    static func signUp(username: String, email: String, password: String, birthdate: String, sex: String, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessge: String?) -> Void) {
+    static func signUp(username: String, email: String, password: String, birthdate: String, phone: String, sex: String, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessge: String?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (user: User?, error: Error?) in
             if error != nil{
                 onError(error!.localizedDescription)
@@ -45,10 +45,44 @@ class AuthServices {
                 let usersReference = ref.child("users")
                 //print(usersReference.description()) : https://wooptis-database.firebaseio.com/users
                 let newUserReference = usersReference.child(uid!)
-                newUserReference.setValue(["username": username, "username_lowercase": username.lowercased(), "email": email, "birthdate": birthdate, "sex": sex, "password": password, "profileImage": profileImageURL])
+                newUserReference.setValue(["username": username, "username_lowercase": username.lowercased(), "email": email, "birthdate": birthdate, "phone": phone, "sex": sex, "password": password, "profileImage": profileImageURL])
                 print("description: \(newUserReference.description())")
                 onSuccess()
             })
         }
+    }
+    
+    static func updateUserInfo(username: String, email: String, birthdate: String, phone: String, sex: String, imageData: Data, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
+        
+        Api.User.CURRENT_USER?.updateEmail(email, completion: { (error) in
+            if (error != nil){
+                onError(error!.localizedDescription)
+            } else {
+                let uid = Api.User.CURRENT_USER?.uid
+                let storageRef = Storage.storage().reference(forURL: "gs://wooptis-database.appspot.com").child("profile_image").child(uid!)
+                
+                storageRef.putData(imageData, metadata: nil, completion: {(metadata, error) in
+                    if (error != nil){
+                        return
+                    }
+                    
+                    let profileImageURL = metadata?.downloadURL()?.absoluteString
+                    
+                    self.updateUserData(username: username, email: email, birthdate: birthdate, phone: phone, sex: sex, profileImage: profileImageURL!, onSuccess: onSuccess, onError: onError)
+                    
+                })
+            }
+        })
+    }
+    
+    static func updateUserData(username: String, email: String, birthdate: String, phone: String, sex: String, profileImage: String, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
+        let path = ["username": username, "username_lowercase": username.lowercased(), "email": email, "birthdate": birthdate, "phone": phone, "sex": sex, "profileImage": profileImage]
+        Api.User.REF_CURRENT_USER?.updateChildValues(path, withCompletionBlock: { (error, ref) in
+            if (error != nil){
+                onError(error!.localizedDescription)
+            } else {
+                onSuccess()
+            }
+        })
     }
 }
