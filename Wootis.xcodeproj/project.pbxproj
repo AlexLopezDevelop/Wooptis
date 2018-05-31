@@ -32,6 +32,11 @@
 		AC6DBC281FED59C800C62610 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6DBC261FED59C800C62610 /* LaunchScreen.storyboard */; };
 		AC6DBC301FED5ADF00C62610 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6DBC2F1FED5ADF00C62610 /* Start.storyboard */; };
 		AC6DBC321FED5D5D00C62610 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DBC311FED5D5D00C62610 /* SignInViewController.swift */; };
+		AC76AC9920BEE45800BD3129 /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76AC9820BEE45800BD3129 /* PeopleTableViewCell.swift */; };
+		AC76AC9B20BEF15E00BD3129 /* FollowApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76AC9A20BEF15E00BD3129 /* FollowApi.swift */; };
+		AC76AC9D20BF3D6F00BD3129 /* FeedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76AC9C20BF3D6F00BD3129 /* FeedApi.swift */; };
+		AC76AC9F20BF4ACE00BD3129 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76AC9E20BF4ACE00BD3129 /* DiscoverViewController.swift */; };
+		AC76ACA120BFFBA300BD3129 /* ProfileUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76ACA020BFFBA300BD3129 /* ProfileUserViewController.swift */; };
 		ACA4B264205F0371004BFB87 /* AuthServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA4B263205F0370004BFB87 /* AuthServices.swift */; };
 		ACCDE4612073B95F00BD8771 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ACCDE45E2073B95E00BD8771 /* ProgressHUD.bundle */; };
 		ACCDE4622073B95F00BD8771 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCDE4602073B95F00BD8771 /* ProgressHUD.m */; };
@@ -73,6 +78,11 @@
 		AC6DBC291FED59C800C62610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC6DBC2F1FED5ADF00C62610 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		AC6DBC311FED5D5D00C62610 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		AC76AC9820BEE45800BD3129 /* PeopleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewCell.swift; sourceTree = "<group>"; };
+		AC76AC9A20BEF15E00BD3129 /* FollowApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowApi.swift; sourceTree = "<group>"; };
+		AC76AC9C20BF3D6F00BD3129 /* FeedApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedApi.swift; sourceTree = "<group>"; };
+		AC76AC9E20BF4ACE00BD3129 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		AC76ACA020BFFBA300BD3129 /* ProfileUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserViewController.swift; sourceTree = "<group>"; };
 		ACA4B263205F0370004BFB87 /* AuthServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServices.swift; sourceTree = "<group>"; };
 		ACCDE45D2073B95D00BD8771 /* Wootis-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wootis-Bridging-Header.h"; sourceTree = "<group>"; };
 		ACCDE45E2073B95E00BD8771 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
@@ -157,6 +167,8 @@
 				AC3BF4C420BAEFC100300B2A /* CommentApi.swift */,
 				AC3BF4C620BAF3F700300B2A /* Post_CommentApi.swift */,
 				4B85E46620BDB57100E8E3D4 /* MyPostApi.swift */,
+				AC76AC9C20BF3D6F00BD3129 /* FeedApi.swift */,
+				AC76AC9A20BEF15E00BD3129 /* FollowApi.swift */,
 				AC289E192086136400BF9550 /* Model */,
 				ACE8B7112089588B00BB8656 /* ViewControllers */,
 				ACE8B7152089594C00BB8656 /* Views */,
@@ -185,6 +197,8 @@
 				AC3A5D4D208373390085F0CD /* PostViewController.swift */,
 				4B85E46420BDA1AD00E8E3D4 /* NavigatorViewController.swift */,
 				4B40194520BEE1FF00AB6745 /* PeopleViewController.swift */,
+				AC76AC9E20BF4ACE00BD3129 /* DiscoverViewController.swift */,
+				AC76ACA020BFFBA300BD3129 /* ProfileUserViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -206,6 +220,7 @@
 				ACE8B7132089594700BB8656 /* HomeTableViewCell.swift */,
 				AC3BF4BA20B857BE00300B2A /* CommentTableViewCell.swift */,
 				4B85E46220BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift */,
+				AC76AC9820BEE45800BD3129 /* PeopleTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -363,21 +378,26 @@
 				AC3BF4C320BAEEFF00300B2A /* Api.swift in Sources */,
 				4B85E46920BDBF4000E8E3D4 /* PhotoCollectionViewCell.swift in Sources */,
 				AC289E1B208613AC00BF9550 /* Post.swift in Sources */,
+				AC76AC9D20BF3D6F00BD3129 /* FeedApi.swift in Sources */,
+				AC76ACA120BFFBA300BD3129 /* ProfileUserViewController.swift in Sources */,
 				ACF1120820397B6F0067B433 /* ProfileViewController.swift in Sources */,
 				ACF1120620397B520067B433 /* SearchViewController.swift in Sources */,
 				AC3BF4C720BAF3F700300B2A /* Post_CommentApi.swift in Sources */,
 				ACA4B264205F0371004BFB87 /* AuthServices.swift in Sources */,
 				AC3BF4BB20B857BE00300B2A /* CommentTableViewCell.swift in Sources */,
 				AC11591C1FF56A6F00B30C79 /* SignUpViewController.swift in Sources */,
+				AC76AC9B20BEF15E00BD3129 /* FollowApi.swift in Sources */,
 				ACE8B7142089594700BB8656 /* HomeTableViewCell.swift in Sources */,
 				AC6DBC321FED5D5D00C62610 /* SignInViewController.swift in Sources */,
 				AC3BF4C520BAEFC100300B2A /* CommentApi.swift in Sources */,
 				AC3BF4BD20BAA33A00300B2A /* Comment.swift in Sources */,
 				4B684E8B20BDDE37000298C2 /* UIBotones.swift in Sources */,
 				4B85E46520BDA1AD00E8E3D4 /* NavigatorViewController.swift in Sources */,
+				AC76AC9920BEE45800BD3129 /* PeopleTableViewCell.swift in Sources */,
 				AC3BF4C120BAEC5500300B2A /* UserpApi.swift in Sources */,
 				AC6DBC1E1FED59C800C62610 /* AppDelegate.swift in Sources */,
 				AC289E182086130600BF9550 /* Config.swift in Sources */,
+				AC76AC9F20BF4ACE00BD3129 /* DiscoverViewController.swift in Sources */,
 				4B40194620BEE1FF00AB6745 /* PeopleViewController.swift in Sources */,
 				ACCDE4622073B95F00BD8771 /* ProgressHUD.m in Sources */,
 				ACF1120420397AE90067B433 /* HomeViewController.swift in Sources */,

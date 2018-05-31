@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol CommentTableViewCellDelegate {
+    func goToProfileUserViewController(userId: String)
+}
+
 class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileUsername: UILabel!
     @IBOutlet weak var commentText: UILabel!
+    
+    var delegate: CommentTableViewCellDelegate?
     
     var comment: Comment? {
         didSet {
@@ -41,6 +47,16 @@ class CommentTableViewCell: UITableViewCell {
         super.awakeFromNib()
         profileUsername.text = ""
         commentText.text = ""
+        
+        let TapGestureUsername = UITapGestureRecognizer(target: self, action: #selector(self.username_Touch))
+        profileUsername.addGestureRecognizer(TapGestureUsername)
+        profileUsername.isUserInteractionEnabled = true
+    }
+    
+    @objc func username_Touch() {
+        if let id = user?.id{
+            delegate?.goToProfileUserViewController(userId: id)
+        }
     }
     
     override func prepareForReuse() {

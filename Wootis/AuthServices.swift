@@ -45,7 +45,7 @@ class AuthServices {
                 let usersReference = ref.child("users")
                 //print(usersReference.description()) : https://wooptis-database.firebaseio.com/users
                 let newUserReference = usersReference.child(uid!)
-                newUserReference.setValue(["username": username, "email": email, "birthdate": birthdate, "sex": sex, "password": password, "profileImage": profileImageURL])
+                newUserReference.setValue(["username": username, "username_lowercase": username.lowercased(), "email": email, "birthdate": birthdate, "sex": sex, "password": password, "profileImage": profileImageURL])
                 print("description: \(newUserReference.description())")
                 onSuccess()
             })

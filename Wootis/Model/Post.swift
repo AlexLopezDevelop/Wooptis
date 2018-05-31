@@ -18,6 +18,7 @@ class Post {
     var postTitle: String?
     var voteFirstCount: Int?
     var voteSecondCount: Int?
+    var totalVotes: Int?
     var votes: Dictionary<String, Any>?
     var isVoted: Bool?
 }
@@ -33,6 +34,7 @@ extension Post {
         post.postTitle = path["Title"] as? String
         post.voteFirstCount = path["votesCountFirst"] as? Int
         post.voteSecondCount = path["votesCountSecond"] as? Int
+        post.totalVotes = path["totalVotes"] as? Int
         post.votes = path["votes"] as? Dictionary<String, Any>
         if let currentUserId = Auth.auth().currentUser?.uid {
             if post.votes != nil {

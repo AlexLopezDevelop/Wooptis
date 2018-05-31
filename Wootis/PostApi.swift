@@ -20,6 +20,19 @@ class PostApi {
             }
         }
     }
+    
+    func observeTopPosts(completion: @escaping (Post) -> Void) {
+        REF_POSTS.queryOrdered(byChild: "totalVotes").observeSingleEvent(of: .value, with: { snapshot in
+            let arraySnapshot = (snapshot.children.allObjects as! [DataSnapshot]).reversed()
+            arraySnapshot.forEach({ (child) in
+                if let path = child.value as? [String: Any] {
+                    let newPost = Post.customPhotoPost(path: path, key: snapshot.key)
+                    completion(newPost)
+                }
+            })
+        })
+    }
+    
     func observePost(with id: String, completion: @escaping (Post) -> Void) {
         REF_POSTS.child(id).observeSingleEvent(of: DataEventType.value, with: { snapshot in
             if let path = snapshot.value as? [String: Any] {

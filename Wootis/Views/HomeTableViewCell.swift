@@ -10,6 +10,11 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
+protocol HomeTableViewCellDelegate {
+    func goToCommentViewController(postId: String)
+    func goToProfileUserViewController(userId: String)
+}
+
 class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var Username: UILabel!
@@ -24,7 +29,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var votesSecondAccounts: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
     
-    var homeViewController: HomeViewController?
+    var delegate: HomeTableViewCellDelegate?
     var postRef: DatabaseReference!
     
     var post: Post? {
@@ -60,6 +65,7 @@ class HomeTableViewCell: UITableViewCell {
                 self.updateVote(post: post)
             }
         })
+        
         updateVote(post: post!)
         Api.Post.REF_POSTS.child(post!.postId!).observe(.value, with: { snapshot in
             
@@ -87,14 +93,18 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     func updateVote(post: Post) {
-        let imageName = post.votes == nil || !post.isVoted! ? "vote" : "voted"
+        var dictionary: NSDictionary = [:]
+        if post.votes != nil {
+            dictionary = post.votes! as NSDictionary
+        }
+        let imageName = dictionary[Api.User.CURRENT_USER?.uid] == nil || !post.isVoted! ? "vote" : "voted"
         let imageNameOposite = imageName == "vote" ? "voted" : "vote"
-        if post.votes?.values.description != nil {
-            let photoVoted = post.votes?.values.description
-            if photoVoted == "[first]" {
+        if dictionary[Api.User.CURRENT_USER?.uid] != nil {
+            let photoVoted = dictionary[Api.User.CURRENT_USER?.uid] as! String
+            if photoVoted == "first" {
                 VoteOneView.image = UIImage(named: imageName)
                 VoteTwoView.image = UIImage(named: imageNameOposite)
-            } else if photoVoted == "[second]" {
+            } else if photoVoted == "second" {
                 VoteTwoView.image = UIImage(named: imageName)
                 VoteOneView.image = UIImage(named: imageNameOposite)
             }
@@ -146,11 +156,21 @@ class HomeTableViewCell: UITableViewCell {
         let TapGestureVoteTwo = UITapGestureRecognizer(target: self, action: #selector(self.VoteTwoView_Touch))
         VoteTwoView.addGestureRecognizer(TapGestureVoteTwo)
         VoteTwoView.isUserInteractionEnabled = true
+        
+        let TapGestureUsername = UITapGestureRecognizer(target: self, action: #selector(self.username_Touch))
+        Username.addGestureRecognizer(TapGestureUsername)
+        Username.isUserInteractionEnabled = true
+    }
+    
+    @objc func username_Touch() {
+        if let id = user?.id{
+            delegate?.goToProfileUserViewController(userId: id)
+        }
     }
     
     @objc func commentsView_Touch() {
         if let id = post?.postId {
-            homeViewController?.performSegue(withIdentifier: "CommentSegue", sender: id)
+            delegate?.goToCommentViewController(postId: id)
         }
     }
     
@@ -171,6 +191,7 @@ class HomeTableViewCell: UITableViewCell {
                 votes = post["votes"] as? [String : String] ?? [:]
                 var votesCountFirst = post["votesCountFirst"] as? Int ?? 0
                 var votesCountSecond = post["votesCountSecond"] as? Int ?? 0
+                var totalVotes = post["totalVotes"] as? Int ?? 0
                 if let _ = votes[uid] {
                     // Unstar the post and remove self from stars
                     if votes[uid]!  == "first" {
@@ -180,6 +201,8 @@ class HomeTableViewCell: UITableViewCell {
                         votesCountSecond -= 1
                         post["votesCountSecond"] = votesCountSecond as AnyObject?
                     }
+                    totalVotes -= 1
+                    post["totalVotes"] = totalVotes as AnyObject?
                     votes.removeValue(forKey: uid)
                 } else {
                     // Star the post and add self to stars
@@ -190,7 +213,8 @@ class HomeTableViewCell: UITableViewCell {
                         votesCountSecond += 1
                         post["votesCountSecond"] = votesCountSecond as AnyObject?
                     }
-                    
+                    totalVotes += 1
+                    post["totalVotes"] = totalVotes as AnyObject?
                     votes[uid] = photoVoted
                 }
                 

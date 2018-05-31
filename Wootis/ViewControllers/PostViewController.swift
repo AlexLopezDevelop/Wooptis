@@ -70,6 +70,11 @@ class PostViewController: UIViewController, ImagePickerDelegate {
                     ProgressHUD.showError(error!.localizedDescription)
                     return
                 }
+                
+                let postId = Database.database().reference().child("posts")
+                Api.Feed.REF_FEED.child(Api.User.CURRENT_USER!.uid).child(postId.childByAutoId().key).setValue(true)
+                //Database.database().reference().child("feed").child(Api.User.CURRENT_USER!.uid).child(postId.childByAutoId().key).setValue(true)
+                
                 let postOneUrl = metadata?.downloadURL()?.absoluteString
                 if let profileImg = self.postTwoPhoto.image, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
                     let photoIdString = NSUUID().uuidString
@@ -115,7 +120,7 @@ class PostViewController: UIViewController, ImagePickerDelegate {
             return
         }
         let userId = currentUser
-        newPostReference.setValue(["userID": userId, "Title": postTitle.text!, "photoOneUrl": photoOneUrl, "photoTwoUrl": photoTwoUrl, "comment": postComment.text!], withCompletionBlock: { (error, ref) in
+        newPostReference.setValue(["userID": userId, "Title": postTitle.text!, "photoOneUrl": photoOneUrl, "photoTwoUrl": photoTwoUrl, "comment": postComment.text!, "totalVotes": 0], withCompletionBlock: { (error, ref) in
             if error != nil {
                 ProgressHUD.showError(error!.localizedDescription)
                 return

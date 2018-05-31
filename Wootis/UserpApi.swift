@@ -16,7 +16,7 @@ class UserApi {
     func observeUsers(withId userId: String, completion: @escaping (Users) -> Void) {
         REF_USERS.child(userId).observeSingleEvent(of: .value, with: { snapshot in
             if let path = snapshot.value as? [String: Any] {
-                let user = Users.transformUser(path: path)
+                let user = Users.transformUser(path: path, key: snapshot.key)
                 completion(user)
             }
         })
@@ -28,9 +28,34 @@ class UserApi {
         }
         REF_USERS.child(currentUser.uid).observeSingleEvent(of: .value, with: { snapshot in
             if let path = snapshot.value as? [String: Any] {
-                let user = Users.transformUser(path: path)
+                let user = Users.transformUser(path: path, key: snapshot.key)
                 completion(user)
             }
+        })
+    }
+    
+    func observeUsersFollow(completion: @escaping (Users) -> Void) {
+        REF_USERS.observe(.childAdded, with: { snapshot in
+            if let path = snapshot.value as? [String: Any] {
+                let user = Users.transformUser(path: path, key: snapshot.key)
+                if user.id! != Api.User.CURRENT_USER?.uid {
+                    completion(user)
+                }
+            }
+        })
+    }
+    
+    func queryUsers(withText text: String, completion: @escaping (Users) -> Void) {
+        REF_USERS.queryOrdered(byChild: "username_lowercase").queryStarting(atValue: text).queryEnding(atValue: text+"\u{f8ff}").queryLimited(toLast: 10).observeSingleEvent(of: .value, with: { snapshot in
+            snapshot.children.forEach({ (search) in
+                let child = search as! DataSnapshot
+                if let path = child.value as? [String: Any] {
+                    let user = Users.transformUser(path: path, key: child.key)
+                    if user.id! != Api.User.CURRENT_USER?.uid {
+                        completion(user)
+                    }
+                }
+            })
         })
     }
     

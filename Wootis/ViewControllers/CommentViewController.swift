@@ -67,13 +67,13 @@ class CommentViewController: UIViewController {
         guard let currentUser = Api.User.CURRENT_USER else {
             return
         }
-        let userId = currentUser
+        let userId = currentUser.uid
         newCommentReference.setValue(["userID": userId, "comment": commentLabel.text!], withCompletionBlock: { (error, ref) in
             if error != nil {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
-            let postCommentRef = Api.Post_Comment.REF_POSTS_COMMENTS.child(self.postId)
+            let postCommentRef = Api.Post_Comment.REF_POSTS_COMMENTS.child(self.postId).child(newCommentId)
             postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
                 if error != nil {
                     ProgressHUD.showError(error!.localizedDescription)
@@ -85,9 +85,10 @@ class CommentViewController: UIViewController {
     }
     
     func loadComments() {
+        print(Api.Post_Comment.REF_POSTS_COMMENTS.child(self.postId))
         Api.Post_Comment.REF_POSTS_COMMENTS.child(self.postId).observe(.childAdded, with: { snapshot in
+            
             Api.Comment.observeComments(withPostId: snapshot.key, completion: { comment in
-                print(comment)
             self.fetchUser(userId: comment.userId!, completed: {
                     self.comments.append(comment)
                     self.tableView.reloadData()
@@ -107,6 +108,14 @@ class CommentViewController: UIViewController {
         self.commentLabel.text = ""
         self.sendButton.isEnabled = false
         self.sendButton.setTitleColor(UIColor.lightGray, for: UIControlState.normal)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Comment_ProfileSegue" {
+            let profileViewController = segue.destination as! ProfileUserViewController
+            let userId = sender as! String
+            profileViewController.userId = userId
+        }
     }
     
     func handleTextField(){
@@ -134,6 +143,13 @@ extension CommentViewController: UITableViewDataSource {
         let user = users[indexPath.row]
         cell.comment = comment
         cell.user = user
+        cell.delegate = self
         return cell
+    }
+}
+
+extension CommentViewController: CommentTableViewCellDelegate {
+    func goToProfileUserViewController(userId: String) {
+        performSegue(withIdentifier: "Comment_ProfileSegue", sender: userId)
     }
 }

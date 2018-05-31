@@ -1,26 +1,24 @@
 //
-//  HeaderProfileCollectionReusableView.swift
+//  PeopleTableViewCell.swift
 //  Wootis
 //
-//  Created by qwerty on 29/5/18.
+//  Created by Alex Lopez on 30/5/18.
 //  Copyright © 2018 Wootis.inc. All rights reserved.
 //
 
 import UIKit
-protocol HeaderProfileCollectionReusableViewDelegate {
-    func updateFollowButton(forUser user: Users)
+
+protocol PeopleTableViewCellDelegate {
+    func goToProfileUserViewController(userId: String)
 }
 
-class HeaderProfileCollectionReusableView: UICollectionReusableView {
+class PeopleTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var username: UILabel!
-    @IBOutlet weak var myPostsCount: UILabel!
-    @IBOutlet weak var followingCount: UILabel!
-    @IBOutlet weak var followerCount: UILabel!
-    @IBOutlet weak var followButton: UIBotones!
+    @IBOutlet weak var followButton: UIButton!
     
-    var delegate: HeaderProfileCollectionReusableViewDelegate?
-    
+    var delegate: PeopleTableViewCellDelegate?
+    var peopleViewController: PeopleViewController?
     var user: Users? {
         didSet {
             updateView()
@@ -28,33 +26,20 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     }
     
     func updateView() {
-        self.username.text = user!.username
-        
-        if let profileImage = user!.profileImageUrl {
-            let profileImageUrl = URL(string: profileImage)
-            self.profileImage.sd_setImage(with: profileImageUrl)
+        username.text = user?.username
+        if let photoUrlString = user?.profileImageUrl {
+            let photoUrl = URL(string: photoUrlString)
+            profileImage.sd_setImage(with: photoUrl, placeholderImage: UIImage(named: "default-img-profile"))
         }
         
-        Api.MyPost.fetchCountMyPosts(userId: user!.id!) { (count) in
-            self.myPostsCount.text = "\(count)"
-        }
+        /*Api.Follow.isFollowing(userId: user!.id!) { (value) in
+            if value {
+                self.configureUnfollowButton()
+            } else {
+                self.configureFollowButton()
+            }
+        }*/
         
-        Api.Follow.fetchCountFollowing(userId: user!.id!) { (count) in
-            self.followingCount.text = "\(count)"
-        }
-        
-        Api.Follow.fetchCountFollowers(userId: user!.id!) { (count) in
-            self.followerCount.text = "\(count)"
-        }
-        
-        if user?.id == Api.User.CURRENT_USER?.uid {
-            followButton.setTitle("Edit Profile", for: UIControlState.normal)
-        } else {
-            updateStateFollowButton()
-        }
-    }
-    
-    func updateStateFollowButton() {
         if user!.isFollowing! {
             configureUnfollowButton()
         } else {
@@ -91,8 +76,8 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             Api.Follow.followAction(withUser: user!.id!)
             configureUnfollowButton()
             user!.isFollowing! = true
-            delegate?.updateFollowButton(forUser: user!)
         }
+        
     }
     
     @objc func unfollowAction() {
@@ -100,7 +85,27 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             Api.Follow.unfollowAction(withUser: user!.id!)
             configureFollowButton()
             user!.isFollowing! = false
-            delegate?.updateFollowButton(forUser: user!)
+        }
+        
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let TapGesture = UITapGestureRecognizer(target: self, action: #selector(self.username_Touch))
+        username.addGestureRecognizer(TapGesture)
+        username.isUserInteractionEnabled = true
+    }
+    
+    @objc func username_Touch() {
+        if let id = user?.id{
+            delegate?.goToProfileUserViewController(userId: id)
         }
     }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
 }

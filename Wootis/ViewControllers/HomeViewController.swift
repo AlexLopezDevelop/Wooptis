@@ -24,16 +24,27 @@ class HomeViewController: UIViewController {
     }
     
     func loadPosts() {
-        loadingIndicator.startAnimating()
-        Api.Post.observePosts { (post) in
+        
+        Api.Feed.observeFeed(withId: Api.User.CURRENT_USER!.uid) { (post) in
             guard let postId = post.userId else {
                 return
             }
             self.fetchUser(userId: postId, completed: {
                 self.posts.append(post)
-                self.loadingIndicator.stopAnimating()
+                //self.loadingIndicator.stopAnimating()
                 self.tableView.reloadData() //Refresh table data
             })
+        }
+        
+        Api.Feed.observeFeedRemove(withId: Api.User.CURRENT_USER!.uid) { (post) in
+//            for (index, post) in self.posts.enumerated() {
+//                if post.postId == key {
+//                    self.posts.remove(at: index)
+//                }
+//            }
+            self.posts = self.posts.filter { $0.postId != post.postId } //For loop but simpler
+            self.users = self.users.filter { $0.id != post.userId }
+            self.tableView.reloadData()
         }
     }
     
@@ -50,6 +61,12 @@ class HomeViewController: UIViewController {
             let postId = sender as! String
             commentViewController.postId = postId
         }
+        
+        if segue.identifier == "Home_ProfileSegue" {
+            let profileViewController = segue.destination as! ProfileUserViewController
+            let userId = sender as! String
+            profileViewController.userId = userId
+        }
     }
     
 }
@@ -65,7 +82,17 @@ extension HomeViewController: UITableViewDataSource {
         let user = users[indexPath.row]
         cell.post = post
         cell.user = user
-        cell.homeViewController = self
+        cell.delegate = self
         return cell
+    }
+}
+
+extension HomeViewController:  HomeTableViewCellDelegate {
+    func goToCommentViewController(postId: String) {
+        performSegue(withIdentifier: "CommentSegue", sender: postId)
+    }
+    
+    func goToProfileUserViewController(userId: String) {
+        performSegue(withIdentifier: "Home_ProfileSegue", sender: userId)
     }
 }
