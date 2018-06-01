@@ -54,7 +54,7 @@ class AuthServices {
     
     static func updateUserInfo(username: String, email: String, birthdate: String, phone: String, sex: String, imageData: Data, onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
         
-        Api.User.CURRENT_USER?.updateEmail(email, completion: { (error) in
+        Api.User.CURRENT_USER?.updateEmail(to: email, completion: { (error) in
             if (error != nil){
                 onError(error!.localizedDescription)
             } else {

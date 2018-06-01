@@ -26,7 +26,7 @@ class PostApi {
             let arraySnapshot = (snapshot.children.allObjects as! [DataSnapshot]).reversed()
             arraySnapshot.forEach({ (child) in
                 if let path = child.value as? [String: Any] {
-                    let newPost = Post.customPhotoPost(path: path, key: snapshot.key)
+                    let newPost = Post.customPhotoPost(path: path, key: child.key)
                     completion(newPost)
                 }
             })

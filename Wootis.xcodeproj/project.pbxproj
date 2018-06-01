@@ -43,6 +43,7 @@
 		ACCDE4622073B95F00BD8771 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = ACCDE4602073B95F00BD8771 /* ProgressHUD.m */; };
 		ACCE6B59204DD80100F1CBEB /* test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCE6B58204DD80100F1CBEB /* test.storyboard */; };
 		ACE8B7142089594700BB8656 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE8B7132089594700BB8656 /* HomeTableViewCell.swift */; };
+		ACED216A20C1BF8D00B2E2BF /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED216920C1BF8D00B2E2BF /* DetailPostViewController.swift */; };
 		ACF1120420397AE90067B433 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF1120320397AE90067B433 /* HomeViewController.swift */; };
 		ACF1120620397B520067B433 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF1120520397B520067B433 /* SearchViewController.swift */; };
 		ACF1120820397B6F0067B433 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF1120720397B6F0067B433 /* ProfileViewController.swift */; };
@@ -92,6 +93,7 @@
 		ACCDE4602073B95F00BD8771 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		ACCE6B58204DD80100F1CBEB /* test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = test.storyboard; sourceTree = "<group>"; };
 		ACE8B7132089594700BB8656 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		ACED216920C1BF8D00B2E2BF /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
 		ACF1120320397AE90067B433 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ACF1120520397B520067B433 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		ACF1120720397B6F0067B433 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -134,7 +136,6 @@
 				AC289E1A208613AC00BF9550 /* Post.swift */,
 				AC3BF4BC20BAA33A00300B2A /* Comment.swift */,
 				AC3BF4B620B7257800300B2A /* Users.swift */,
-				4B85E46820BDBF4000E8E3D4 /* PhotoCollectionViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,6 +203,7 @@
 				AC76ACA220C0481E00BD3129 /* SettingTableViewController.swift */,
 				AC76AC9E20BF4ACE00BD3129 /* DiscoverViewController.swift */,
 				AC76ACA020BFFBA300BD3129 /* ProfileUserViewController.swift */,
+				ACED216920C1BF8D00B2E2BF /* DetailPostViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -224,6 +226,7 @@
 				AC3BF4BA20B857BE00300B2A /* CommentTableViewCell.swift */,
 				4B85E46220BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift */,
 				AC76AC9820BEE45800BD3129 /* PeopleTableViewCell.swift */,
+				4B85E46820BDBF4000E8E3D4 /* PhotoCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				4B85E46920BDBF4000E8E3D4 /* PhotoCollectionViewCell.swift in Sources */,
 				AC289E1B208613AC00BF9550 /* Post.swift in Sources */,
 				AC76AC9D20BF3D6F00BD3129 /* FeedApi.swift in Sources */,
+				ACED216A20C1BF8D00B2E2BF /* DetailPostViewController.swift in Sources */,
 				AC76ACA120BFFBA300BD3129 /* ProfileUserViewController.swift in Sources */,
 				ACF1120820397B6F0067B433 /* ProfileViewController.swift in Sources */,
 				ACF1120620397B520067B433 /* SearchViewController.swift in Sources */,
@@ -539,7 +543,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LX4P693W2D;
 				INFOPLIST_FILE = Wootis/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alexlopez.com.Wootis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -559,7 +563,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LX4P693W2D;
 				INFOPLIST_FILE = Wootis/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = alexlopez.com.Wootis;
 				PRODUCT_NAME = "$(TARGET_NAME)";

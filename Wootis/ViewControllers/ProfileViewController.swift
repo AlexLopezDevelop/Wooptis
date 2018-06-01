@@ -24,17 +24,6 @@ class ProfileViewController: UIViewController {
         fetchMyPosts()
     }
 
-    @IBAction func logOut(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-        } catch let logOutError{
-            print(logOutError)
-        }
-        let storyboard =  UIStoryboard(name: "Start", bundle: nil)
-        let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-        self.present(signInVC, animated: true, completion: nil)
-    }
-    
     func fetchUser() {
         Api.User.observCurrentUser { (user) in
             self.user = user
@@ -53,6 +42,13 @@ class ProfileViewController: UIViewController {
                 self.collectionView.reloadData()
             })
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Profile_SettingSegue" {
+            let settingViewController = segue.destination as! SettingTableViewController
+            settingViewController.delegate = self
+        }
     }
     
 }
@@ -82,5 +78,11 @@ extension ProfileViewController: UICollectionViewDataSource {
 extension ProfileViewController: HeaderProfileCollectionReusableViewDelegateSwitchViewController {
     func goToSettingViewController() {
         performSegue(withIdentifier: "Profile_SettingSegue", sender: nil)
+    }
+}
+
+extension ProfileViewController: SettingTableViewControllerDelegate {
+    func updateUserData() {
+        self.fetchUser()
     }
 }

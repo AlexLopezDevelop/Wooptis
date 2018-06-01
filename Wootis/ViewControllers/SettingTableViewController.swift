@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import FirebaseAuth
+
+protocol SettingTableViewControllerDelegate {
+    func updateUserData()
+}
 
 class SettingTableViewController: UITableViewController {
     @IBOutlet weak var usernameField: UITextField!
@@ -16,9 +21,16 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet weak var sexField: UITextField!
     @IBOutlet weak var profileImage: UIImageView!
     
+    var delegate: SettingTableViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Edit Profile"
+        usernameField.delegate = self
+        EmailField.delegate = self
+        BirthdateField.delegate = self
+        phoneField.delegate = self
+        sexField.delegate = self
         fetchCurrentUser()
     }
     
@@ -42,8 +54,10 @@ class SettingTableViewController: UITableViewController {
     
     @IBAction func saveButton(_ sender: Any) {
         if let profileImg = self.profileImage.image, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
+            ProgressHUD.show("Saving...")
             AuthServices.updateUserInfo(username: usernameField.text!, email: EmailField.text!, birthdate: BirthdateField.text!, phone: phoneField.text!, sex: sexField.text!, imageData: imageData, onSuccess: {
                 ProgressHUD.showSuccess("Saved")
+                self.delegate?.updateUserData()
             }, onError: { (errorMessage) in
                 ProgressHUD.showError(errorMessage)
             })
@@ -55,7 +69,14 @@ class SettingTableViewController: UITableViewController {
     }
     
     @IBAction func logoutButton(_ sender: Any) {
-        
+        do {
+            try Auth.auth().signOut()
+        } catch let logOutError{
+            print(logOutError)
+        }
+        let storyboard =  UIStoryboard(name: "Start", bundle: nil)
+        let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
+        self.present(signInVC, animated: true, completion: nil)
     }
 }
 
@@ -65,5 +86,12 @@ extension SettingTableViewController: UIImagePickerControllerDelegate, UINavigat
             profileImage.image = image
         }
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension SettingTableViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
