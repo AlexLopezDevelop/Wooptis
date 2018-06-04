@@ -13,6 +13,15 @@ import FirebaseAuth
 class UserApi {
     var REF_USERS = Database.database().reference().child("users")
     
+    func observUserByUsername(username: String, completion: @escaping (Users) -> Void) {
+        REF_USERS.queryOrdered(byChild: "username_lowercase").queryEqual(toValue: username).observeSingleEvent(of: .childAdded, with: { snapshot in
+            if let path = snapshot.value as? [String: Any] {
+                let user = Users.transformUser(path: path, key: snapshot.key)
+                completion(user)
+            }
+        })
+    }
+    
     func observeUsers(withId userId: String, completion: @escaping (Users) -> Void) {
         REF_USERS.child(userId).observeSingleEvent(of: .value, with: { snapshot in
             if let path = snapshot.value as? [String: Any] {

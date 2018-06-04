@@ -49,6 +49,12 @@ class ProfileViewController: UIViewController {
             let settingViewController = segue.destination as! SettingTableViewController
             settingViewController.delegate = self
         }
+        
+        if segue.identifier == "Profile_DetailSegue" {
+            let detailPostViewController = segue.destination as! DetailPostViewController
+            let postId = sender as! String
+            detailPostViewController.postId = postId
+        }
     }
     
 }
@@ -62,6 +68,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! PhotoCollectionViewCell
         let post = posts[indexPath.row]
         cell.post = post
+        cell.delegate = self
         return cell
     }
     
@@ -84,5 +91,11 @@ extension ProfileViewController: HeaderProfileCollectionReusableViewDelegateSwit
 extension ProfileViewController: SettingTableViewControllerDelegate {
     func updateUserData() {
         self.fetchUser()
+    }
+}
+
+extension ProfileViewController: PhotoCollectionViewCellDelegate {
+    func goToDetailPostViewController(postId: String) {
+        performSegue(withIdentifier: "Profile_DetailSegue", sender: postId)
     }
 }

@@ -44,6 +44,12 @@
 		ACCE6B59204DD80100F1CBEB /* test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACCE6B58204DD80100F1CBEB /* test.storyboard */; };
 		ACE8B7142089594700BB8656 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE8B7132089594700BB8656 /* HomeTableViewCell.swift */; };
 		ACED216A20C1BF8D00B2E2BF /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED216920C1BF8D00B2E2BF /* DetailPostViewController.swift */; };
+		ACED216C20C319B900B2E2BF /* HastagApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED216B20C319B900B2E2BF /* HastagApi.swift */; };
+		ACED216E20C323E700B2E2BF /* HastagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED216D20C323E700B2E2BF /* HastagViewController.swift */; };
+		ACED217020C4327E00B2E2BF /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED216F20C4327E00B2E2BF /* ActivityViewController.swift */; };
+		ACED217220C432F500B2E2BF /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED217120C432F500B2E2BF /* ActivityTableViewCell.swift */; };
+		ACED217420C4399000B2E2BF /* NotificationApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED217320C4399000B2E2BF /* NotificationApi.swift */; };
+		ACED217620C43BA100B2E2BF /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACED217520C43BA100B2E2BF /* Notification.swift */; };
 		ACF1120420397AE90067B433 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF1120320397AE90067B433 /* HomeViewController.swift */; };
 		ACF1120620397B520067B433 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF1120520397B520067B433 /* SearchViewController.swift */; };
 		ACF1120820397B6F0067B433 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF1120720397B6F0067B433 /* ProfileViewController.swift */; };
@@ -94,6 +100,12 @@
 		ACCE6B58204DD80100F1CBEB /* test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = test.storyboard; sourceTree = "<group>"; };
 		ACE8B7132089594700BB8656 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		ACED216920C1BF8D00B2E2BF /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
+		ACED216B20C319B900B2E2BF /* HastagApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HastagApi.swift; sourceTree = "<group>"; };
+		ACED216D20C323E700B2E2BF /* HastagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HastagViewController.swift; sourceTree = "<group>"; };
+		ACED216F20C4327E00B2E2BF /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		ACED217120C432F500B2E2BF /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
+		ACED217320C4399000B2E2BF /* NotificationApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationApi.swift; sourceTree = "<group>"; };
+		ACED217520C43BA100B2E2BF /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		ACF1120320397AE90067B433 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ACF1120520397B520067B433 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		ACF1120720397B6F0067B433 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +148,7 @@
 				AC289E1A208613AC00BF9550 /* Post.swift */,
 				AC3BF4BC20BAA33A00300B2A /* Comment.swift */,
 				AC3BF4B620B7257800300B2A /* Users.swift */,
+				ACED217520C43BA100B2E2BF /* Notification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,8 +183,10 @@
 				AC3BF4C420BAEFC100300B2A /* CommentApi.swift */,
 				AC3BF4C620BAF3F700300B2A /* Post_CommentApi.swift */,
 				4B85E46620BDB57100E8E3D4 /* MyPostApi.swift */,
+				ACED216B20C319B900B2E2BF /* HastagApi.swift */,
 				AC76AC9C20BF3D6F00BD3129 /* FeedApi.swift */,
 				AC76AC9A20BEF15E00BD3129 /* FollowApi.swift */,
+				ACED217320C4399000B2E2BF /* NotificationApi.swift */,
 				AC289E192086136400BF9550 /* Model */,
 				ACE8B7112089588B00BB8656 /* ViewControllers */,
 				ACE8B7152089594C00BB8656 /* Views */,
@@ -204,6 +219,8 @@
 				AC76AC9E20BF4ACE00BD3129 /* DiscoverViewController.swift */,
 				AC76ACA020BFFBA300BD3129 /* ProfileUserViewController.swift */,
 				ACED216920C1BF8D00B2E2BF /* DetailPostViewController.swift */,
+				ACED216D20C323E700B2E2BF /* HastagViewController.swift */,
+				ACED216F20C4327E00B2E2BF /* ActivityViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -227,6 +244,7 @@
 				4B85E46220BD935500E8E3D4 /* HeaderProfileCollectionReusableView.swift */,
 				AC76AC9820BEE45800BD3129 /* PeopleTableViewCell.swift */,
 				4B85E46820BDBF4000E8E3D4 /* PhotoCollectionViewCell.swift */,
+				ACED217120C432F500B2E2BF /* ActivityTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -346,6 +364,7 @@
 				"${BUILT_PRODUCTS_DIR}/Hue/Hue.framework",
 				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
+				"${BUILT_PRODUCTS_DIR}/KILabel/KILabel.framework",
 				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -359,6 +378,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hue.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KILabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -376,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACED216C20C319B900B2E2BF /* HastagApi.swift in Sources */,
 				4B85E46720BDB57100E8E3D4 /* MyPostApi.swift in Sources */,
 				AC3BF4B920B8574200300B2A /* CommentViewController.swift in Sources */,
 				AC3BF4B720B7257800300B2A /* Users.swift in Sources */,
@@ -383,13 +404,16 @@
 				AC3A5D4E208373390085F0CD /* PostViewController.swift in Sources */,
 				AC3BF4C320BAEEFF00300B2A /* Api.swift in Sources */,
 				4B85E46920BDBF4000E8E3D4 /* PhotoCollectionViewCell.swift in Sources */,
+				ACED216E20C323E700B2E2BF /* HastagViewController.swift in Sources */,
 				AC289E1B208613AC00BF9550 /* Post.swift in Sources */,
 				AC76AC9D20BF3D6F00BD3129 /* FeedApi.swift in Sources */,
 				ACED216A20C1BF8D00B2E2BF /* DetailPostViewController.swift in Sources */,
+				ACED217420C4399000B2E2BF /* NotificationApi.swift in Sources */,
 				AC76ACA120BFFBA300BD3129 /* ProfileUserViewController.swift in Sources */,
 				ACF1120820397B6F0067B433 /* ProfileViewController.swift in Sources */,
 				ACF1120620397B520067B433 /* SearchViewController.swift in Sources */,
 				AC3BF4C720BAF3F700300B2A /* Post_CommentApi.swift in Sources */,
+				ACED217220C432F500B2E2BF /* ActivityTableViewCell.swift in Sources */,
 				ACA4B264205F0371004BFB87 /* AuthServices.swift in Sources */,
 				AC3BF4BB20B857BE00300B2A /* CommentTableViewCell.swift in Sources */,
 				AC11591C1FF56A6F00B30C79 /* SignUpViewController.swift in Sources */,
@@ -402,11 +426,13 @@
 				4B684E8B20BDDE37000298C2 /* UIBotones.swift in Sources */,
 				4B85E46520BDA1AD00E8E3D4 /* NavigatorViewController.swift in Sources */,
 				AC76AC9920BEE45800BD3129 /* PeopleTableViewCell.swift in Sources */,
+				ACED217020C4327E00B2E2BF /* ActivityViewController.swift in Sources */,
 				AC3BF4C120BAEC5500300B2A /* UserpApi.swift in Sources */,
 				AC6DBC1E1FED59C800C62610 /* AppDelegate.swift in Sources */,
 				AC289E182086130600BF9550 /* Config.swift in Sources */,
 				AC76AC9F20BF4ACE00BD3129 /* DiscoverViewController.swift in Sources */,
 				4B40194620BEE1FF00AB6745 /* PeopleViewController.swift in Sources */,
+				ACED217620C43BA100B2E2BF /* Notification.swift in Sources */,
 				ACCDE4622073B95F00BD8771 /* ProgressHUD.m in Sources */,
 				ACF1120420397AE90067B433 /* HomeViewController.swift in Sources */,
 				AC3BF4BF20BAE65400300B2A /* PostApi.swift in Sources */,

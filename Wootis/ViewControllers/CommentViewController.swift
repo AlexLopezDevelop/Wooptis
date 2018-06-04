@@ -73,6 +73,17 @@ class CommentViewController: UIViewController {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
+            
+            let words = self.commentLabel.text!.components(separatedBy: CharacterSet.whitespacesAndNewlines)
+            
+            for var word in words {
+                if word.hasPrefix("#"){
+                    word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
+                    let newHastagTagRef = Api.Hastag.REF_HASTAG.child(word.lowercased())
+                    newHastagTagRef.updateChildValues([self.postId: true])
+                }
+            }
+            
             let postCommentRef = Api.Post_Comment.REF_POSTS_COMMENTS.child(self.postId).child(newCommentId)
             postCommentRef.setValue(true, withCompletionBlock: { (error, ref) in
                 if error != nil {
@@ -116,6 +127,12 @@ class CommentViewController: UIViewController {
             let userId = sender as! String
             profileViewController.userId = userId
         }
+        
+        if segue.identifier == "Comment_HastagSegue" {
+            let hastagViewController = segue.destination as! HastagViewController
+            let tag = sender as! String
+            hastagViewController.tag = tag
+        }
     }
     
     func handleTextField(){
@@ -151,5 +168,8 @@ extension CommentViewController: UITableViewDataSource {
 extension CommentViewController: CommentTableViewCellDelegate {
     func goToProfileUserViewController(userId: String) {
         performSegue(withIdentifier: "Comment_ProfileSegue", sender: userId)
+    }
+    func goToHastag(tag: String) {
+        performSegue(withIdentifier: "Comment_HastagSegue", sender: tag)
     }
 }

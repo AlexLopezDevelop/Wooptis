@@ -48,6 +48,7 @@ PODS:
   - ImagePicker (3.0.0)
   - Imaginary (3.0.3):
     - Cache (~> 4.0)
+  - KILabel (1.0.1)
   - leveldb-library (1.20)
   - Lightbox (2.1.2):
     - Hue (~> 3.0)
@@ -67,6 +68,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - ImagePicker
+  - KILabel
   - Lightbox
   - SDWebImage
 
@@ -85,6 +87,7 @@ SPEC REPOS:
     - Hue
     - ImagePicker
     - Imaginary
+    - KILabel
     - leveldb-library
     - Lightbox
     - nanopb
@@ -104,11 +107,12 @@ SPEC CHECKSUMS:
   Hue: 93e852fa6211ab35922ad8c293f51c43d6c79eb2
   ImagePicker: 973953c25960fe04729a7082a56194321c6762d2
   Imaginary: 9b45836a5af881f452a86e0a1215772ae4712d00
+  KILabel: 4797807cdc0b4992dad8bf91175ddc973c3b569b
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   Lightbox: 2dc267df8be2285bc7724cb11cbbf4aaaf59dced
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
 
-PODFILE CHECKSUM: 7f95ac24b019161eba3754057e6b87638fc80380
+PODFILE CHECKSUM: 437f82cae2938ac134761d1eafe4822f420cfcb3
 
 COCOAPODS: 1.5.0

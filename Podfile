@@ -11,6 +11,7 @@ target 'Wootis' do
   pod 'SDWebImage'
   pod 'ImagePicker'
   pod 'Lightbox'
+  pod 'KILabel'
   # Pods for Wootis
 
 end

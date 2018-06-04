@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import KILabel
 
 protocol CommentTableViewCellDelegate {
     func goToProfileUserViewController(userId: String)
+    func goToHastag(tag: String)
 }
 
 class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileUsername: UILabel!
-    @IBOutlet weak var commentText: UILabel!
+    @IBOutlet weak var commentText: KILabel!
     
     var delegate: CommentTableViewCellDelegate?
     
@@ -33,6 +35,16 @@ class CommentTableViewCell: UITableViewCell {
     
     func refreshData() {
         commentText.text = comment?.commentText
+        commentText.hashtagLinkTapHandler = { label, string, range in //Hastag
+            let tag = String(string.dropFirst())
+            self.delegate?.goToHastag(tag: tag)
+        }
+        commentText.userHandleLinkTapHandler = { label, string, range in // User mention
+            let mention = String(string.dropFirst())
+            Api.User.observUserByUsername(username: mention.lowercased(), completion: { (user) in
+                self.delegate?.goToProfileUserViewController(userId: user.id!)
+            })
+        }
     }
     
     func userInfo() {

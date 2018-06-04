@@ -9,10 +9,12 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import KILabel
 
 protocol HomeTableViewCellDelegate {
     func goToCommentViewController(postId: String)
     func goToProfileUserViewController(userId: String)
+    func goToHastag(tag: String)
 }
 
 class HomeTableViewCell: UITableViewCell {
@@ -27,7 +29,8 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var shareView: UIImageView!
     @IBOutlet weak var votesFirstAccounts: UIButton!
     @IBOutlet weak var votesSecondAccounts: UIButton!
-    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var commentLabel: KILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     var delegate: HomeTableViewCellDelegate?
     var postRef: DatabaseReference!
@@ -46,6 +49,16 @@ class HomeTableViewCell: UITableViewCell {
     
     func refreshData() {
         commentLabel.text = post?.comment
+        commentLabel.hashtagLinkTapHandler = { label, string, range in //Hastag
+            let tag = String(string.dropFirst())
+            self.delegate?.goToHastag(tag: tag)
+        }
+        commentLabel.userHandleLinkTapHandler = { label, string, range in // User mention
+            let mention = String(string.dropFirst())
+            Api.User.observUserByUsername(username: mention.lowercased(), completion: { (user) in
+                self.delegate?.goToProfileUserViewController(userId: user.id!)
+            })
+        }
         postTitle.text = post?.postTitle
         if let photoOneImageString = post?.photoOneUrl {
             let photoOneUrl = URL(string: photoOneImageString)
@@ -59,13 +72,42 @@ class HomeTableViewCell: UITableViewCell {
             postImageTwo.image = UIImage(named: "post-test")
         }
         
+        if post?.postId != nil {
         Api.Post.REF_POSTS.child(post!.postId!).observeSingleEvent(of: .value, with: { snapshot in
             if let path = snapshot.value as? [String: Any] {
                 let post = Post.customPhotoPost(path: path, key: snapshot.key)
                 self.updateVote(post: post)
             }
         })
-        
+            
+            if let timestamp = post?.timestamp {
+                let timestampDate = Date(timeIntervalSince1970: Double(timestamp))
+                let now = Date()
+                let components = Set<Calendar.Component>([.second, .minute, .hour, .day, .weekOfMonth])
+                let diff = Calendar.current.dateComponents(components, from: timestampDate, to: now)
+                var timeText = ""
+                if diff.second! <= 0 {
+                    timeText = "Now"
+                }
+                if diff.second! > 0 && diff.minute! == 0 {
+                    timeText = (diff.second == 1) ? "\(diff.second!) second ago" : "\(diff.second!) seconds ago"
+                }
+                if diff.minute! > 0 && diff.hour! == 0 {
+                    timeText = (diff.minute == 1) ? "\(diff.minute!) minute ago" : "\(diff.minute!) minutes ago"
+                }
+                if diff.hour! > 0 && diff.day! == 0 {
+                    timeText = (diff.hour == 1) ? "\(diff.hour!) hour ago" : "\(diff.second!) hours ago"
+                }
+                if diff.day! > 0 && diff.weekOfMonth! == 0 {
+                    timeText = (diff.day == 1) ? "\(diff.day!) day ago" : "\(diff.second!) days ago"
+                }
+                if diff.weekOfMonth! > 0 {
+                    timeText = (diff.weekOfMonth == 1) ? "\(diff.weekOfMonth!) week ago" : "\(diff.weekOfMonth!) weeks ago"
+                }
+                
+                timeLabel.text = timeText
+            }
+            
         updateVote(post: post!)
         Api.Post.REF_POSTS.child(post!.postId!).observe(.value, with: { snapshot in
             
@@ -90,6 +132,7 @@ class HomeTableViewCell: UITableViewCell {
                     self.votesFirstAccounts.setTitle("\(value) votes", for: UIControlState.normal)
             }
         })
+        }
     }
     
     func updateVote(post: Post) {

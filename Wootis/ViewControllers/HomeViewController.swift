@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     
     var posts = [Post]()
     var users = [Users]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 521
@@ -30,7 +31,7 @@ class HomeViewController: UIViewController {
                 return
             }
             self.fetchUser(userId: postId, completed: {
-                self.posts.append(post)
+                self.posts.insert(post, at: 0)
                 //self.loadingIndicator.stopAnimating()
                 self.tableView.reloadData() //Refresh table data
             })
@@ -50,7 +51,7 @@ class HomeViewController: UIViewController {
     
     func fetchUser(userId: String, completed: @escaping () -> Void) {
         Api.User.observeUsers(withId: userId, completion: { user in
-            self.users.append(user)
+            self.users.insert(user, at: 0)
             completed()
         })
     }
@@ -66,6 +67,12 @@ class HomeViewController: UIViewController {
             let profileViewController = segue.destination as! ProfileUserViewController
             let userId = sender as! String
             profileViewController.userId = userId
+        }
+        
+        if segue.identifier == "Home_HastagSegue" {
+            let hastagViewController = segue.destination as! HastagViewController
+            let tag = sender as! String
+            hastagViewController.tag = tag
         }
     }
     
@@ -94,5 +101,9 @@ extension HomeViewController:  HomeTableViewCellDelegate {
     
     func goToProfileUserViewController(userId: String) {
         performSegue(withIdentifier: "Home_ProfileSegue", sender: userId)
+    }
+    
+    func goToHastag(tag: String) {
+        performSegue(withIdentifier: "Home_HastagSegue", sender: tag)
     }
 }

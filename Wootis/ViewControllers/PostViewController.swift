@@ -119,13 +119,35 @@ class PostViewController: UIViewController, ImagePickerDelegate {
         guard let currentUser = Auth.auth().currentUser?.uid else {
             return
         }
+        
         let userId = currentUser
-        newPostReference.setValue(["userID": userId, "Title": postTitle.text!, "photoOneUrl": photoOneUrl, "photoTwoUrl": photoTwoUrl, "comment": postComment.text!, "totalVotes": 0], withCompletionBlock: { (error, ref) in
+        let words = postComment.text.components(separatedBy: CharacterSet.whitespacesAndNewlines)
+        
+        for var word in words {
+            if word.hasPrefix("#"){
+                word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
+                let newHastagTagRef = Api.Hastag.REF_HASTAG.child(word.lowercased())
+                newHastagTagRef.updateChildValues([newPostId: true])
+            }
+        }
+        
+        let timestamp = Int(Date().timeIntervalSince1970)
+        
+        newPostReference.setValue(["userID": userId, "Title": postTitle.text!, "photoOneUrl": photoOneUrl, "photoTwoUrl": photoTwoUrl, "comment": postComment.text!, "totalVotes": 0, "timestamp": timestamp], withCompletionBlock: { (error, ref) in
             if error != nil {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
             
+            Api.Follow.REF_FOLLOWERS.child(Api.User.CURRENT_USER!.uid).observeSingleEvent(of: .value, with: { snapshot in
+                let arraySnapshot = snapshot.children.allObjects as! [DataSnapshot]
+                arraySnapshot.forEach({ (child) in
+                    Api.Feed.REF_FEED.child(child.key).updateChildValues(["\(newPostId)": true])
+                    let mewNotificationId = Api.Notification.REF_NOTIFICATION.child(child.key).childByAutoId().key
+                    let newNotificationReference = Api.Notification.REF_NOTIFICATION.child(child.key).child(mewNotificationId)
+                    newNotificationReference.setValue(["from": Api.User.CURRENT_USER!.uid, "type": "feed", "objectUd": newPostId, "timestamp": timestamp])
+                })
+            })
             let myPostRef = Api.MyPost.REF_MY_POSTS.child(userId).child(newPostId)
             myPostRef.setValue(true, withCompletionBlock: { (error, ref) in
                 if error != nil {
@@ -137,6 +159,7 @@ class PostViewController: UIViewController, ImagePickerDelegate {
             self.postOnePhoto.image = UIImage(named: "img-default")
             self.postTwoPhoto.image = UIImage(named: "img-default")
             self.tabBarController?.selectedIndex = 1
+            self.performSegue(withIdentifier: "Post_HomeSegue", sender: nil)
         })
     }
     
